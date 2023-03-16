@@ -1,0 +1,515 @@
+header .mobile{display: flex;}header .desktop{display: none;}
+/* ..........................................................................  */
+header .mobile
+{
+    border-bottom: 1px solid grey;
+    /* border-radius: var(--border-radius); */
+    padding: 10px 5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* box-shadow: 0px 0px 5px var(--color-theme); */
+}
+
+header .mobile .logo
+{
+    display: block;
+    max-width: 200px;
+    height: auto;
+    /* border: 2px solid var(--color-theme); */
+    background-color: white;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    /* box-shadow: 0px 0px 10px var(--color-theme); */
+}
+
+header .mobile .logo img,header .mobile .logo svg
+{
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+}
+
+header .mobile .name
+{
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+}
+
+header .mobile .menu-button
+{
+    display: flex;
+    text-align: center;
+    padding: 4px 8px;
+    border: 1px solid grey;
+    color: var(--color-theme);
+    background-color: var(--color-theme-bg);
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+}
+
+header .mobile .menu-button.no-radius
+{
+    border-radius: 0px;
+}
+
+header .mobile .menu-button.no-border
+{
+    border: none;
+}
+
+header .mobile .menu-button svg
+{
+    width: 30px;
+    height: 30px;
+}
+
+header .mobile .search-box
+{
+    /* display: flex; */
+    position: fixed;
+    top: 0;
+    right: -3000px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    z-index: 7000;
+    overflow-y: scroll;
+    padding: 10px;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+header .mobile .search-box .exit
+{
+    display: block;
+    color: red;
+    /* border-bottom: 1px solid red; */
+    padding: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+header .mobile .search-box .exit svg
+{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 7px;
+}
+
+header .mobile .search-box .search
+{
+    margin: 0 auto;
+    margin-top: 5px;
+    display: block;
+    width: 95%;
+    padding: 1px;
+    padding-left: 2px;
+    /* width: 100%; */
+    border: 1px solid var(--color-theme);
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    border-radius: var(--border-radius);
+    display: flex;
+    /* justify-content: center; */
+    /* box-shadow: 0px 0px 5px var(--color-theme); */
+}
+
+header .mobile .search-box .search input
+{
+    width: 85%;
+    font-size: 20px;
+    /* border-radius: 100px; */
+    background-color: inherit;
+    color: inherit;
+    border: none;
+}
+
+/* header .mobile .search-box .search input:focus
+{
+    outline: none;
+} */
+
+header .mobile .search-box .search button
+{
+    position: relative;
+    top: 2px;
+    margin-left: 5px;
+    padding: 2px 6px;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+}
+
+header .mobile .search-box .search button svg
+{
+    width: 30px;
+    height: 30px;
+}
+
+header .mobile .search-box .m_suggestion
+{
+    margin: 10px auto;
+    border-radius: var(--border-radius);
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    width: 98%;
+    /* border-radius: 10px; */
+    overflow: scroll;
+    max-height: 70%;
+}
+
+header .mobile .search-box .m_suggestion a,header .mobile .search-box .m_suggestion span
+{
+    display: block;
+    color: inherit;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    transition: 0s;
+}
+
+header .mobile .search-box .m_suggestion a svg,header .mobile .search-box .m_suggestion span svg
+{
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    position: relative;
+    top: 5px;
+}
+
+header .mobile .search-box .m_suggestion a:hover,header .mobile .search-box .m_suggestion span:hover
+{
+    color: var(--color-special-bg);
+    background-color: var(--color-special);
+}
+
+header .mobile .search-box .suggestion_empty
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: grey;
+    background-color: var(--color-theme-bg);
+    min-height: 450px;
+    text-align: center;
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+header .mobile .search-box .suggestion_empty .title
+{
+    color: var(--color-theme);
+    font-weight: bold;
+    font-size: 25px;
+    margin: 10px 0;
+}
+
+header .mobile .search-box .suggestion_empty p
+{
+    font-size: 17px;
+}
+
+header .mobile .search-box .suggestion_empty .svg
+{
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 100px;
+    background-color: whitesmoke;
+    color: grey;
+}
+
+header .mobile .search-box .suggestion_empty .svg svg
+{
+    width: 60px;
+    height: 60px;
+}
+
+header .mobile .menu
+{
+    /* display: flex; */
+    position: fixed;
+    top: 0;
+    left: -3000px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    z-index: 7000;
+    overflow-y: scroll;
+    padding: 10px;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+header .mobile .menu .title
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    color: var(--color-special);
+    /* background-color: var(--color-special-bg); */
+    border-bottom: 1px solid var(--color-special);
+    padding: 5px;
+    padding: 10px;
+}
+
+header .mobile .menu .exit
+{
+    /* display: block; */
+    float: right;
+    margin-right: 10px;
+    color: red;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    bottom: 3px;
+}
+
+header .mobile .menu .exit svg
+{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 8px;
+}
+
+header .mobile .menu .user
+{
+    display: block;
+    text-decoration: none;
+    margin: 10px;
+    color: var(--color-theme);
+    background-color: var(--color-theme-bg);
+    padding: 8px;
+    padding-bottom: 16px;
+    min-height: 50px;
+    border-radius: 0px;
+    border: 1px solid var(--color-theme);
+}
+
+header .mobile .menu .user .img
+{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 105px;
+    border: 1px solid transparent;
+    margin-right: 10px;
+    background-color: transparent;
+}
+
+header .mobile .menu .user .img img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 105px;
+    animation-name: none;
+}
+
+
+header .mobile .menu .user .name
+{
+    display: inline-block;
+    position: relative;
+    top: 12px;
+    font-weight: bold;
+    font-size: 20px;
+    color: inherit;
+}
+
+header .mobile .menu ul
+{
+    padding-left: 0px;
+}
+
+header .mobile .menu ul a
+{
+    margin: 10px;
+    display: block;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+    color: var(--color-theme);
+    border: 1px solid transparent;
+    position: relative;
+    transition: none;
+}
+
+header .mobile .menu ul a:hover
+{
+    border-color: var(--color-special);
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+    opacity: 1;
+}
+
+header .mobile .menu a svg,header .mobile .menu .title svg
+{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 5px;
+    margin-right: 10px;
+}
+
+header .mobile .menu a svg
+{
+    /* color: grey; */
+    padding: 0;
+}
+
+header .mobile .menu a .sp
+{
+    display: inline-block;
+    /* position: absolute;
+    top: -5px;
+    left: 30px; */
+    padding: 1px 8px;
+    border-radius: 100px;
+    background-color: red;
+    color: white;
+    margin-left: 8px;
+    /* box-shadow: 0px 0px 5px var(--color-theme); */
+}
+
+header .mobile .menu ul a.active
+{
+    border-color: var(--color-theme);
+    color: var(--color-theme-bg);
+    background-color: var(--color-theme);
+}
+
+header .mobile .menu ul a.red
+{
+    color: red;
+    background-color: var(--color-theme-bg);
+    border: 1px solid red;
+}
+
+header .mobile .menu ul a.red:hover
+{
+    background-color: red;
+    color: white;
+}
+
+header .mobile .menu ul a.red svg
+{
+    color: inherit;
+}
+
+header .mobile .menu .lang
+{
+    padding: 10px;
+    display: block;
+    /* text-align: center; */
+}
+
+header .mobile .menu .lang select
+{
+    font-size: 20px;
+}
+
+header .mobile .bar
+{
+    position: fixed;
+    bottom: -5px;
+    left: -5px;
+    width: 95%;
+    /* max-width: 100%; */
+    padding: 10px 20px;
+    padding-bottom: 13px;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    z-index: 6000;
+    box-shadow: 0px 0px 5px var(--color-theme);
+    display: flex;
+    justify-content: space-around;
+    opacity: 0;
+    animation-delay: 6s;
+    animation-name: bar;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes bar
+{
+    from{opacity: 0;bottom: -50px;}
+    to{opacity: 1;bottom: 0;}    
+}
+
+header .mobile .bar .item
+{
+    display: inline-block;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    position: relative;
+    padding: 5px 10px;
+}
+
+header .mobile .bar .item svg
+{
+    width: 30px;
+    height: 30px;
+}
+
+header .mobile .bar .item .title
+{
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 3px;
+}
+
+header .mobile .bar .item .sp
+{
+    position: absolute;
+    top: -8px;
+    left: -5px;
+    padding: 1px 6px;
+    border-radius: 100px;
+    color: white;
+    background-color: red;
+    box-shadow: 0px 0px 5px var(--color-theme-bg);
+}
+
+header .mobile .bar .item .sp.green
+{
+    color: white;
+    background-color: green;
+    animation-name: clignote;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes clignote
+{
+    from{opacity: 0.4;}    
+    to{opacity: 1;}
+}
+
+header .mobile .bar .item.active
+{
+    border-radius: 10px;
+    /* color: var(--color-theme); */
+    background-color: var(--color-theme);
+    color: var(--color-theme-bg);
+
+}
+
+/* header .mobile .bar .item.active .title
+{
+    text-decoration: underline;
+} */

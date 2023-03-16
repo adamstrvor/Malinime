@@ -1,0 +1,1013 @@
+
+
+header,footer
+{
+    display: none;
+}
+
+#PAUSE,#VOLUME_MIDDLE,#VOLUME_MUTE,#EXIT_FULLSCREEN
+{
+    display: none;
+}
+
+#PARAMS,#INIT_BOX,#IDLE_BOX,#LOADING_BOX,#START_BOX
+{
+    display: none;
+}
+
+.content .ALERT
+{
+    z-index: 9600;
+    position: fixed;
+    top: 0;
+    left: -1px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+}
+
+.content .ALERT div
+{
+    margin: 15px 0;
+}
+
+.content .ALERT .svg
+{
+    padding: 20px;
+    background-color: whitesmoke;
+    color: grey;
+    border-radius: 100px;
+    box-shadow: 0px 0px 5px black;
+    width: 45px;
+    height: 45px;
+}
+
+.content .ALERT .svg svg
+{
+    width: 100%;
+    height:100%;
+}
+
+.content .ALERT .title
+{
+    font-weight: bold;
+    font-size: 20px;
+    color: red;
+}
+
+.content .ALERT .desc
+{
+    color: grey;
+    font-size: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.content .ALERT form
+{
+    display: block;
+    width: 98%;
+    margin-top: 5px;
+    text-align: center;
+    display: none;
+}
+
+.content .ALERT form input
+{
+    display: inline-block;
+    width: initial;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-size: 15px;
+    /* color: black;
+    background-color: white; */
+    margin: 5px;
+    text-align: center;
+
+}
+
+.content .ALERT form input:hover
+{
+    border-color: var(--color-special);
+    color: var(--color-special);
+    box-shadow: 0px 0px 3px white;
+}
+
+.content .ALERT .bad
+{
+    padding: 10px;
+    border-radius: var(--border-radius);
+    text-align: center;
+    color: var(--color-bad);
+    background-color: var(--color-bad-bg);
+    margin: 5px;
+    font-size: 15px;
+    display: inline-block;
+}
+
+.content .ALERT .button
+{
+    display: inline-block;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-special);
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+    box-shadow: 0px 0px 3px black;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 15px;
+}
+
+.content .ALERT .button svg
+{
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+.content .ALERT .button:hover
+{
+    background-color: var(--color-special-bg);
+    color: var(--color-special);   
+}
+
+.none,.ALERT.none, .ALERT .none
+{
+    display: none;
+}
+
+/* .....................  */
+
+.content .LOGO
+{
+    z-index: 9500;
+    position: fixed;
+    top: 8px;
+    right: 8px;
+    width: 25px;
+    height: 25px;
+    border-radius:100px;
+    /* box-shadow: 0px 0px 3px black; */
+    opacity: 0;
+    animation-delay: 25s;
+    animation-name: logo_anime;
+    animation-duration: 2s;
+    animation-iteration-count: 10;
+    animation-fill-mode: forwards;
+    font-family: sans-serif;
+}
+
+@keyframes logo_anime {
+    from{opacity: 1;}
+    to{opacity: 0;}
+    
+}
+
+.content .LOGO img
+{
+    max-width: 100%;
+    max-height: 100%;
+    border-radius:100px;
+}
+
+/* .....................  */
+
+.content
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 1px;
+}
+
+.content input[type=range]:focus
+{
+    outline: none;
+    box-shadow: 0px 0px 0px black;
+}
+
+/* VIDEO  */
+
+.content video
+{
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    /* background-color: white; */
+}
+
+.content video div
+{
+    display: none;
+}
+
+/* FLOU TOP  */
+
+.flou-top
+{
+    position: absolute;
+    top: -5px;
+    left: -2px;
+    width: 100%;
+    padding: 1px;
+    z-index: 1000;
+    /* box-shadow: 0px 0px 40px 20px black; */
+}
+
+.flou-bottom
+{
+    /* position: absolute;
+    bottom: -2px;
+    left: -1px;
+    width: 100%; */
+    margin-top: 3px;
+    padding: 1px;
+    background-color: transparent;
+    box-shadow: 0px 0px 90px 95px rgba(0, 0, 0, 0.301);
+    position: relative;
+    top: 50px;
+    z-index: -1;
+}
+
+/* ACTIONS CONTAINERS */
+
+.content .actions
+{
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    width: 100%;
+    padding: 10px;
+    padding-top: 0;
+    padding-bottom: 15px;
+    /* background-color: rgba(0, 0, 0, 0.329); */
+    /* box-shadow: 0px 0px 20px rgba(97, 96, 96, 0.507); */
+    transition: 0.5s;
+    z-index: 8000;
+    opacity: 1;
+}
+
+/* PROGRESS  */
+
+.content .progress
+{
+    position: relative;
+    left: -5px;
+    display: block;
+    width: 98%;
+    height: 7px;
+    background-color: rgba(128, 128, 128, 0.747);
+    margin: 0 auto;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 1px black;
+}
+
+.content .progress:hover
+{
+    /* background-color: whitesmoke; */
+    /* height: 7px; */
+    cursor: pointer;
+}
+
+.content .progress input[type=range]
+{
+    position: absolute;
+    top: -12px;
+    left: -14px;
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: none;
+    border: none;
+}
+
+.content .progress input[type=range]::-webkit-slider-thumb
+{
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 200px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-special-bg);
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.content .actions:hover  .progress input[type=range]::-webkit-slider-thumb
+{
+    /* display: block; */
+    opacity: 1;
+    width: 15px;
+    height: 15px;
+    box-shadow: 0px 0px 4px black;
+}
+
+/* .content .progress input[type=range]::-moz-range-thumb
+{
+    width: 20px; 
+    height: 20px; 
+    background: var(--color-special); 
+    cursor: pointer; 
+} */
+
+.content .progress2,.content .progress1
+{
+    position: absolute;
+    top: 0;
+    background-color: whitesmoke;
+    width: 0%;
+    height: 100%;
+    transition: none;
+    border-radius: var(--border-radius);
+}
+
+/* .content .progress1
+{
+    background-color: rgb(216, 216, 45);
+} */
+
+.content .progress .progress3
+{
+    position: absolute;
+    top: 0;
+    background-color: var(--color-special);
+    width: 0%;
+    height: 100%;
+    transition: none;
+    border-radius: var(--border-radius);
+}
+
+.content .progress .progress3 .head
+{
+    opacity: 0;
+    float: right;
+    position: relative;
+    left: 18px;
+    bottom: 7px;
+    padding: 5px;
+    border: 5px solid var(--color-special);
+    background-color: var(--color-special-bg);
+    border-radius: 100px;
+    box-shadow: 0px 0px 4px black;
+    transition: 0.1s;
+}
+
+/* .content .actions:hover  .progress3
+{
+    background-color: var(--color-special);
+} */
+
+.content .progress:hover  .head
+{
+    display: block;
+    opacity: 0;
+    background-color: var(--color-special-bg);
+    border-color: var(--color-special);
+}
+
+@media screen and (max-width:800px) {
+
+    .content .progress
+    {
+        height: 7px;
+    }
+
+    .content .progress .head
+    {
+        display: block;
+        opacity: 1;
+        background-color: var(--color-special-bg);
+        border-color: var(--color-special);
+    }
+    
+}
+
+/* VOLUME  */
+
+
+.content .volume
+{
+    display: inline-block;
+    margin: 0 5px;
+    position: relative;
+    top: 10px;
+    left: 5px;
+    width: 110px;
+    height: 5px;
+    background-color: whitesmoke;
+    margin: 10px auto;
+    cursor: pointer;
+    /* transition: 0.2s; */
+    /* box-shadow: 0px 0px 10px black; */
+    border-radius: var(--border-radius);
+}
+
+@media screen and (max-width:1000px) {
+    .content .volume
+    {
+        display: inline-block;
+    }
+}
+
+/* .content .volume:hover
+{
+    background-color: whitesmoke;
+    height: 7px;
+} */
+
+.content .volume input[type=range]
+{
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    outline: none;
+}
+
+.content .volume input[type=range]::-webkit-slider-thumb
+{
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer; /* Cursor on hover */
+    border-radius: 200px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-special-bg);
+    opacity: 0;
+}
+
+/* .content .volume input[type=range]::-moz-range-thumb
+{
+    width: 20px; 
+    height: 20px; 
+    background: var(--color-special); 
+    cursor: pointer; 
+    border-radius: var(--border-radius);
+} */
+
+.content .volume .volume3
+{
+    position: absolute;
+    top: 0;
+    background-color: var(--color-special);
+    width: 100%;
+    /* transition: 0.1s; */
+    height: 100%;
+    border-radius: var(--border-radius);
+}
+
+.content .volume .volume3 .head
+{
+    display: block;
+    opacity: 1;
+    float: right;
+    position: relative;
+    bottom: 6px;
+    right: -8px;
+    padding: 4px;
+    border: 4px solid var(--color-special-bg);
+    background-color: var(--color-special-bg);
+    border-radius: 100px;
+    box-shadow: 0px 0px 4px black;
+}
+
+/* .content .volume:hover  .head
+{
+    display: block;
+    background-color: var(--color-special-bg-hover);
+    border-color: var(--color-special);
+} */
+
+/* OPTIONS  */
+
+.content .options
+{
+    padding: 10px;
+    /* margin: 5px 0; */
+    /* text-align: center; */
+}
+
+.content .options .right
+{
+    float: right;
+}
+
+.content .options .left
+{
+    float: left;
+}
+
+.content .options .button
+{
+    padding: 5px;
+    border-radius: 5px;
+    /* border: 1px solid var(--color-special); */
+    color: white;
+    /* background-color: var(--color-special-bg); */
+    /* background-color: rgba(0, 0, 0, 0.705); */
+    margin: 5px;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    /* box-shadow: 0px 0px 3px black; */
+    text-shadow: 0px 0px 4px black;
+}
+
+.content .options .button svg
+{
+    width: 100%;
+    height: 100%;
+    text-shadow: 0px 0px 4px black;
+}
+
+.content .options .button:hover
+{
+    color: var(--color-special-bg);
+    background-color: var(--color-special);
+    box-shadow: 0px 0px 4px black;
+    border-color: var(--color-special);
+}
+
+/* TIME AND DURATION  */
+
+.content .options .time
+{
+    display: flex;
+    float: left;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    /* bottom: 7px; */
+    font-size: 16px;
+    font-family: sans-serif;
+    color:  white;
+    /* background-color: var(--color-special-bg); */
+    /* background-color: rgba(0, 0, 0, 0.705); */
+    text-shadow: 0px 0px 4px black;
+    font-weight: bold;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    height: 25px;
+    vertical-align: middle;
+}
+
+.content .options .time span
+{
+    margin: 0 5px;
+}
+
+.content .options .time .sp
+{
+    /* color: green; */
+    padding: 0;
+}
+
+/* .......................................  */
+
+.content .subtitles
+{
+    position: absolute;
+    left: 0px;
+    bottom: 25px;
+    width:100%;
+    text-align: center;
+}
+
+.content .subtitles .text
+{
+    display: none;
+    padding: 5px;
+    /* background-color: rgba(0, 0, 0, 0.288); */
+    color: white;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    text-shadow: 0px 0px 4px black;
+    max-width:65%;
+    border-radius: var(--border-radius);
+    line-height: 30px;
+}
+
+.content .subtitles .text svg
+{
+    margin: 0 5px;
+    float: left;
+    width: 15px;
+    height: 15px;
+    color: grey;
+    position: relative;
+    top: 5px;
+
+}
+
+.content .subtitles .text svg.green
+{
+    color: green;
+    background-color: whitesmoke;
+    padding: 6px;
+    border-radius: 100px;
+    top: 0;
+}
+
+.content .subtitles .text svg.theme
+{
+    color: var(--color-special);
+}
+
+.content .subtitles .text svg.right
+{
+    float: right;
+}
+
+/* .content .progress:hover  .overview
+{
+    display: block;
+} */
+
+.content .overview
+{
+    position: absolute;
+    left: 0px;
+    bottom: 25px;
+    display: none;
+    /* transition: 0.1s; */
+    /* opacity: 0; */
+    /* background-color: whitesmoke; */
+    text-align: center;
+    /* border: 2px solid white; */
+    /* background-color: rgba(0, 0, 0, 0.74); */
+    color: white;
+    border-radius: var(--border-radius);
+    padding: 1px;
+    /* box-shadow: 0px 0px 3px black; */
+}
+
+.content .overview video
+{
+    display: block;
+    max-width: 200px;
+    max-height: 100px;
+    border-radius: var(--border-radius);
+    border: 1px solid gray;
+    background-color: gray;
+}
+
+.content .overview .timer
+{
+    /* border: 1px solid var(--color-special-bg); */
+    /* font-weight: bold; */
+    display: inline-block;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    font-family: sans-serif;
+    border-radius: var(--border-radius);
+    /* background-color: rgba(0, 0, 0, 0.74); */
+    text-shadow: 0px 0px 4px black;
+    margin-top: 5px;
+    /* border-radius: 5px; */
+}
+
+/* .......................................  */
+
+.empty
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: -2px;
+    left: -2px;
+    padding: 10px;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    display: 'none';
+}
+
+.empty .svg
+{
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 5px var(--color-theme);
+    background-color: whitesmoke;
+    margin: 25px 0;
+}
+
+.empty .svg svg
+{
+    width: 100%;
+    height: 100%;
+    color: grey;
+}
+
+.empty .title
+{
+    font-weight: bold;
+    font-size: 25px;
+    color: red;
+    padding: 10px;
+    border: 4px solid red;
+    margin: 25px 0;
+    border-radius: var(--border-radius);
+}
+
+.empty .subtitle
+{
+    color: grey;
+    font-size: 20px;
+    margin: 25px 0;
+}
+
+.empty a
+{
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0px 0px var(--color-theme);
+    color: var(--color-theme);
+    background-color: var(--color-theme-bg);
+    border: 2px solid var(--color-theme);
+    transition: 0.2s;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.empty a:hover
+{
+    color: var(--color-theme-bg);
+    background-color: var(--color-theme);
+    box-shadow: 0px 0px 5px var(--color-theme);
+}
+
+/* .......................................  */
+
+.content .box
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    z-index: 7000;
+    background-color: rgba(0, 0, 0, 0.301);
+    color: white;
+}
+
+.content .box .info
+{
+    width: 80%;
+    max-height: 80%;
+    overflow: hidden;
+    position: relative;
+    bottom: 10%;
+    font-family: sans-serif;
+}
+
+.content .trans
+{
+    background-color: transparent;
+}
+
+.content .notrans
+{
+    background-color: black;
+}
+
+.content .box .info .title_
+{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.content .box .info .desc
+{
+    /* font-weight: bold; */
+    margin: 10px 0;
+    font-size: 15px;
+    line-height: 35px;
+}
+
+.content .box .loading
+{
+    padding: 15px;
+    border-radius: 100px;
+    box-shadow: 0px 0px 5px black;
+    background-color: var(--color-special-bg);
+    color: green;
+    border: 4px solid var(--color-special);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.content .box .loading:hover
+{
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+    border-color: white;
+}
+
+.content .box .title
+{
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--color-special-bg);
+    background-color: var(--color-special);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content .box .loading.bounce
+{
+    animation-name: bounce;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    cursor: default;
+}
+
+.content .box .loading.bounce:hover
+{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: green;
+}
+
+.pointer
+{
+    cursor: pointer;
+}
+
+.content .box .loading svg
+{
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes bounce
+{
+    from{opacity: 1;}
+    to{opacity: 0.5;}
+    /* from{position: relative;top: 0;border-color: var(--color-special);}
+    to{position: relative;top: 50px;border-color: green;} */
+}
+
+
+
+.content .box .exit
+{
+    color: red;
+    cursor: pointer;
+    margin: 2;
+}
+
+/* .content .box_params
+{
+    display: none;
+} */
+
+#PARAMS
+{
+    opacity: 1;
+}
+
+.content .box .params
+{
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid gray;
+    background-color: rgba(0, 0, 0, 0.799);
+    color: white;
+    max-width: 70%;
+    max-height: 65%;position: relative;
+    bottom: 10%;
+    overflow-y: scroll;
+}
+
+.content .items
+{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+/* PARAMS  */
+
+.content .box .params .title
+{
+    padding: 5px;
+    margin: 5px 0;
+    /* border-bottom: 1px solid white; */
+    background-color: transparent;
+    color: var(--color-special);
+    padding: 2px;
+    text-align: center;
+    cursor: initial;
+    border-radius: 0;
+}
+
+.content .box .params .item
+{
+    padding: 5px;
+    min-width: 200px;
+}
+
+.content .box .params .item div
+{
+    padding: 5px;
+}
+
+.content .box .params .item label
+{
+    cursor: pointer;
+}
+
+.content .box .params .item .title2
+{
+    border-bottom: 1px solid white;
+    margin-bottom: 5px;
+}
+
+.content .box .params .item p
+{
+    margin: 5px;
+}
+
+
+/* .......................................  */
+/* 
+.content .poster
+{
+    z-index: 6000;
+    position: fixed;
+    top: -5px;
+    left:-5px;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196F3;
+}
+
+.content .poster .post_item
+{
+    border: 1px solid grey;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+} */

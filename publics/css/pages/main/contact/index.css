@@ -1,0 +1,41 @@
+.content
+{
+    padding: 10px;
+    /* text-align: center; */
+}
+
+.content .top-title
+{
+    margin: 5px 0;
+    /* padding-left: 10px; */
+    font-weight: bold;
+    font-size: 20px;
+    /* border-left: 4px solid var(--color-special); */
+    border-bottom: 4px solid var(--color-special);
+    color: var(--color-special);
+}
+
+.content form
+{
+    display: block;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.content form label
+{
+    display: block;
+    color: var(--color-special);
+    margin: 10px;
+}
+
+.content form input,.content form textarea
+{
+    min-width: 50%;
+}
+
+.content a,.content a:hover
+{
+    color: green;
+    text-decoration: underline;
+}

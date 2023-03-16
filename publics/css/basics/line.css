@@ -1,0 +1,11 @@
+.underline
+{
+    width: 70px;
+    height: 2px;
+    background-color: var(--color-theme);
+}
+
+.barrer
+{
+    text-decoration: line-through;
+}

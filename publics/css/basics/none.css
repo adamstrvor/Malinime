@@ -1,0 +1,20 @@
+.none
+{
+    display: none;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.display-block
+{
+    display: block;
+    opacity: 1;
+}
+
+.display-inline-block
+{
+    display: inline-block;
+}

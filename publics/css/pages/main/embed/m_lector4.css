@@ -1,0 +1,48 @@
+.content .volume
+{
+    display: none;
+}
+
+/* .content .overview video
+{
+    max-width: 100px;
+    max-height: 50px;
+} */
+
+/* #PARAMS
+{
+    align-items: flex-end;
+} */
+
+.content .box .info .title_
+{
+    font-size: 20px;
+}
+
+.content .box .info .desc
+{
+    font-size: 16px;
+}
+
+.content .box .params
+{
+    max-width: 90%;
+    /* position: relative;
+    right:-8%; */
+}
+
+.content .subtitles .text
+{
+    font-size: 13px;
+}
+
+/* .content .box .params .item
+{
+    min-width: 300px;
+} */
+
+.content .items
+{
+    flex-direction: column;
+    justify-content: center;
+}

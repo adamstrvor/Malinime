@@ -1,0 +1,53 @@
+form input,form .error
+{
+    width: 300px;
+}
+
+form input[type=checkbox],form input[type=radio]
+{
+    width: auto;
+}
+
+form input.inline,form label.inline
+{
+    display: inline-block;
+}
+
+form .error,.form_error
+{
+    display: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-bad);
+    box-shadow: 0px 0px 5px var(--color-theme);
+    color: var(--color-bad);
+    background-color: var(--color-bad-bg);
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+form .error svg
+{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+
+.form_error
+{
+    display: block;
+    font-size: 15px;
+    border-radius: 20px;
+    margin: 10px 0;
+}
+
+.form_error svg
+{
+    width: 20px;
+    height: 20px;
+    float: right;
+    margin: 0 10px;
+    cursor: pointer;
+}

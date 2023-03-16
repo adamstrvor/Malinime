@@ -1,0 +1,376 @@
+header .mobile{display: none;}header .desktop{display: flex;}
+/* ..........................................................................  */
+
+.panneaux
+{
+    display: block;
+    text-decoration: none;
+    width: 100%;
+}
+
+.panneaux img
+{
+    width: 100%;
+    height: 100%;
+}
+
+header
+{
+    /* position: sticky;
+    top: 0px; */
+    background-color: var(--color-theme-bg);
+    padding: 0;
+    z-index: 6000;
+}
+
+header .desktop
+{
+    border-bottom: 1px solid grey;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 0px 5px var(--color-theme);
+}
+
+header .desktop .logo
+{
+    display: inline-block;
+    max-width: 210px;
+    height: auto;
+    text-decoration: none;
+    background-color: white;
+    /* border: 2px solid var(--color-theme); */
+    /* box-shadow: 0px 0px 10px var(--color-theme); */
+    border-radius: 10px;
+}
+
+header .desktop .logo img,header .desktop .logo svg
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+header .desktop .options
+{
+    padding: 10px 5px;
+}
+
+header .desktop .options a,header .desktop .options span
+{
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+header .desktop .search_bar
+{
+    position: relative;
+}
+
+header .desktop .search_bar input
+{
+    width: 550px;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    border: 2px solid grey;
+    border-radius: var(--border-radius);
+}
+
+header .desktop .search_bar input:focus
+{
+    border-color: var(--color-special);
+}
+
+header .desktop .search_bar button
+{
+    padding: 9px 15px;
+    position: relative;
+    top: 1px;
+    border-radius: var(--border-radius);
+}
+
+header .desktop .search_bar button svg
+{
+    width: 20px;
+    height: 20px;
+}
+
+header .desktop .search_bar .suggestion
+{
+    position: absolute;
+    left: 0;
+    top: 55px;
+    width: 87%;
+    border-radius: var(--border-radius);
+    /* border: 1px solid var(--color-theme); */
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    box-shadow: 0px 0px 3px var(--color-theme);
+    z-index: 7000;
+    max-height: 400px;
+    overflow-y: scroll;
+    display: none;
+}
+
+header .desktop .search_bar .suggestion a,header .desktop .search_bar .suggestion span
+{
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+    color: inherit;
+    transition: 0s;
+}
+
+header .desktop .search_bar .suggestion a svg,header .desktop .search_bar .suggestion span svg
+{
+    width: 15px;
+    height: 15px;
+    margin: 0 10px;
+    position: relative;
+    top: 2px;
+}
+
+header .desktop .search_bar .suggestion a:hover,header .desktop .search_bar .suggestion span:hover
+{
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+}
+
+header .desktop .options
+{
+    position: relative;
+}
+
+header .desktop .options .user
+{
+    padding: 3px;
+    background-color: var(--color-theme-bg);
+    color: var(--color-theme);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    /* border: 1px solid var(--color-theme); */
+    /* box-shadow: 0px 0px 5px var(--color-theme); */
+    border-radius: var(--border-radius);
+    max-width: 200px;
+    overflow: hidden;
+}
+
+header .desktop .options .user .img
+{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 105px;
+    margin-right: 5px;
+    border:2px solid var(--color-theme);
+}
+
+header .desktop .options .user .img img
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 105px;
+    background-color: var(--color-theme);
+    animation-name: none;
+}
+
+header .desktop .options .user .name
+{
+    float: right;
+    font-weight: bold;
+    font-size: 15px;
+    position: relative;
+    top: 3px;
+    overflow: hidden;
+    width: 120px;
+    height: 40px;
+}
+
+header .desktop .user-options
+{
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 70px;
+    min-width: 300px;
+    max-width: 301px;
+    max-height:500px;
+    overflow:scroll;
+    border-radius: var(--border-radius);
+    /* padding: 10px 0; */
+    color: var(--color-theme);
+    background-color: var(--color-theme-bg);
+    box-shadow: 0px 0px 5px var(--color-theme);
+    z-index: 7000;
+    padding: 2px;
+}
+
+header .desktop .user-options .title
+{
+    font-weight: bold;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-theme);
+    margin-bottom: 5px;
+    color: var(--color-special);
+}
+
+header .desktop .user-options a
+{
+    display: block;
+    padding: 10px;
+    color: inherit;
+    font-size: 16px;
+    color: inherit;
+    border-radius: var(--border-radius);
+    margin: 4px 0;
+    border: 1px solid transparent;
+    transition: none;
+    position: relative;
+
+}
+
+/* header .desktop .user-options a.active
+{
+    background-color: whitesmoke;
+    color: grey;
+} */
+
+header .desktop .user-options a:hover
+{
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+    border-color: var(--color-special);
+    
+}
+
+header .desktop .user-options a.active
+{
+    border-color: var(--color-theme);
+    color: var(--color-theme-bg);
+    background-color: var(--color-theme);
+}
+
+header .desktop .user-options a.red
+{
+    color: red;
+    /* background-color: whitesmoke; */
+}
+
+header .desktop .user-options a.red:hover
+{
+    color: red;
+    /* background-color: red; */
+    border-color: red;
+}
+
+header .desktop .user-options a svg
+{
+    margin-right: 10px;
+    position: relative;
+    top: 3px;
+    /* color: grey; */
+}
+
+header .desktop .user-options a.red svg
+{
+    color: inherit;
+}
+
+header .desktop .cart
+{
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+
+header .desktop .cart svg
+{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 2px;
+}
+
+header .desktop a .sp,header .desktop .button .sp
+{
+    position: absolute;
+    top: -9px;
+    left: -9px;
+    padding: 1px 4px;
+    border-radius: 100px;
+    background-color: red;
+    color: white;
+    box-shadow: 0px 0px 3px var(--color-theme);
+    font-size: 14px;
+}
+
+header .desktop .user-options a .sp
+{
+    position: initial;
+    top: 0;
+    left: 0;
+    margin-left: 8px;
+}
+
+header .desktop a .sp.green,header .desktop .button .sp.green
+{
+    color: white;
+    background-color: green;
+    animation-name: clignote;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes clignote
+{
+    from{opacity: 0.4;}    
+    to{opacity: 1;}
+}
+
+@media screen and (max-width:1150px)
+{
+    header .desktop .search_bar input
+    {
+        width: 350px;
+    }
+}
+
+header .desktop .button
+{
+    cursor: pointer;
+    position: relative;
+    color: grey;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+header .desktop .button.active,header .desktop .cart.active
+{
+    color: var(--color-theme);
+}
+
+header .desktop .button:hover
+{
+    color: var(--color-theme);
+}
+
+header .desktop .button svg
+{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    top: 2px;
+}
+
+header .desktop .button.mode
+{
+    cursor: pointer;
+    color: var(--color-theme);
+}
+
+header .desktop .user-options.cat
+{
+    max-width: 400px;
+    min-width: 300px;
+}

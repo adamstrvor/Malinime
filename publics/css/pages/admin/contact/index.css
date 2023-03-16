@@ -1,0 +1,97 @@
+.content
+{
+    padding: 10px;
+}
+
+.content .title
+{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.content .title .sp
+{
+    color: green;
+}
+
+.content .over
+{
+    overflow: scroll;
+}
+
+.content table
+{
+    border-collapse: collapse;
+}
+
+.content table thead
+{
+    background-color: var(--color-special);
+    color: var(--color-special-bg);
+    border-bottom: 1px solid var(--color-special);
+}
+
+.content table td,.content table th
+{
+    padding: 20px 10px;
+    min-width: 150px;
+    text-align: center;
+    font-size: 16px;
+    max-width: 300px;
+}
+
+.content table td.sp
+{
+    font-weight: bold;
+    color: red;
+}
+
+.content table td.italic
+{
+    font-style: oblique;
+}
+
+.content table td.green
+{
+    color: green;
+}
+
+.content table td a
+{
+    text-decoration: none;
+    font-size: inherit;
+    color: var(--color-special);
+}
+
+.content table td a:hover
+{
+    text-decoration: underline;
+}
+
+.content table td svg
+{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    position: relative;
+    top: 7px;
+}
+
+.content .country svg
+{
+    width: 25px;
+    height: 25px;
+}
+
+.content table tbody tr
+{
+    border-bottom: 1px solid grey;
+}
+
+.content table tbody tr:nth-child(odd)
+{
+    /* background-color: whitesmoke; */
+    border-bottom: 1px solid grey;
+}

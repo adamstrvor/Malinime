@@ -1,0 +1,35 @@
+
+/* ..........................................................................  */
+
+footer address
+{
+    text-align: center;
+    padding: 20px;
+    color: grey;
+    font-size: 14px;
+    font-style: normal;
+    border-top: 1px solid grey;
+    margin: 10px 0;
+    line-height: 30px;
+}
+
+footer address a
+{
+    font-size: inherit;
+    color: var(--color-theme);
+}
+
+
+footer .pays
+{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+footer .pays svg
+{
+    width: 15px;
+    height: 15px;
+    position: relative;
+    top: 2px;
+}

@@ -1,0 +1,27 @@
+:root
+{
+    --color-special: rgb(53, 105, 201); /* rgb(53, 105, 201) */
+    --color-special-bg:white;
+    --color-good:green;
+    --color-good-bg:rgb(203, 252, 203);
+    --color-bad:red;
+    --color-bad-bg:rgb(250, 208, 208);
+    --color-theme:black;
+    --color-theme-bg:white;
+}
+
+.good
+{
+    background-color: var(--color-good-bg);
+    color: var(--color-good);
+    border-color: var(--color-good);
+    outline-color: var(--color-good);
+}
+
+.bad
+{
+    background-color: var(--color-bad-bg);
+    color: var(--color-bad);
+    border-color: var(--color-bad);
+    outline-color: var(--color-bad);
+}

@@ -1,0 +1,6 @@
+body{background-color: var(--color-theme-bg);color: var(--color-theme);margin: 0;padding: 0px;}
+.body
+{
+    padding: 20px;
+    background-color: var(--color-theme-bg);
+}

@@ -1,0 +1,33 @@
+.alert
+{
+    padding: 15px;
+}
+
+.float-left
+{
+    float: left;
+}
+
+.float-right
+{
+    float: right;
+}
+
+.alert .exit
+{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    border: 1px solid gray;
+}
+
+.alert .exit svg
+{
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.no-radius
+{
+    border-radius: 0px;
+}

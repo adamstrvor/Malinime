@@ -1,0 +1,53 @@
+
+.content_g .flex .item
+{
+    width: 95%;
+}
+
+.content_g .flex form input,.content_g .flex form textarea
+{
+    width: 90%;
+}
+
+.content_g
+{
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.content_g .body
+{
+    width: initial;
+    /* padding: 20px 10px; */
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.content_g .partner
+{
+    width: 100%;
+    margin: 15px auto;
+}
+
+/* .content_g .partner .cont
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.content_g .partner .cont a,.content_g .partner .cont iframe
+{
+    max-width: 40%;
+} */
+
+.content_g .episode
+{
+    justify-content: space-between;
+}
+
+.content_g iframe
+{
+    height: 500px;
+}

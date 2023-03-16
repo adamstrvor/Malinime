@@ -1,0 +1,9 @@
+header .desktop .search_bar input
+{
+    border-radius: var(--border-radius);
+}
+
+header .desktop .search_bar button
+{
+    border-radius: var(--border-radius);
+}

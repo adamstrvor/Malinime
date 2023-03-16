@@ -1,0 +1,18 @@
+select
+{
+    padding: 10px;
+    border-radius: var(--border-radius);
+    color: var(--color-theme);
+    background-color: var(--color-theme-bg);
+    border: 2px solid var(--color-theme);
+    font-size: 17px;
+    cursor: pointer;
+}
+
+select:focus
+{
+    box-shadow: 0px 0px 5px var(--color-theme);
+    border-color: var(--color-special);
+    color: var(--color-special);
+    outline: none;
+}

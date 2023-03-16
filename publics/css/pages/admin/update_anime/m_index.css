@@ -1,0 +1,30 @@
+
+.content
+{
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.content .items
+{
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.content .items .item .info
+{
+    width: 45%;
+}
+
+.content .items .item .img
+{
+    width: 180px;
+    height: 230px;
+    height: auto;
+    background-color: transparent;
+}
+
+.content .items .item .img .vf
+{
+    font-size: 12px;
+}

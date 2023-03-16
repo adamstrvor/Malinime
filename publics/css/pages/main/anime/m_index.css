@@ -1,0 +1,68 @@
+
+.content
+{
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.content .body
+{
+    width: initial;
+}
+
+.content .partner
+{
+    width: 100%;
+    margin: 15px auto;
+    text-align: center;
+}
+
+/* .content .partner .cont
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.content .partner .cont a,.content .partner .cont iframe
+{
+    max-width: 40%;
+} */
+
+.content .comments .c
+{
+    width: initial;
+}
+
+.content .comments
+{
+    flex-direction: column;
+}
+
+.content .box_info
+{
+    flex-wrap: wrap;
+}
+
+.content .over
+{
+    width: 100%;
+}
+
+.content .characters
+{
+    justify-content:center;
+    /* align-items:center; */
+}
+
+.content .list2
+{
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.content .list2 .itm
+{
+    width: 150px;
+}

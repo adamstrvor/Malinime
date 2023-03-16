@@ -1,0 +1,15 @@
+.GLOBAL_WAITING
+{
+    z-index: 9000;
+}
+
+.GLOBAL_WAITING .logo
+{
+    width: 100px;
+    height: 100px;
+}
+
+.GLOBAL_WAITING .loading
+{
+    width: 50%;
+}

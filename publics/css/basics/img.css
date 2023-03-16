@@ -1,0 +1,13 @@
+img.clignote
+{
+    background-color: grey;
+    animation-name: clignote_img;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes clignote_img
+{
+    from{background-color: whitesmoke;}
+    to{background-color: grey;}    
+}
