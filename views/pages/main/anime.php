@@ -120,18 +120,18 @@ $CHARACTERS = $var['PERSO'] ?? null;
 
 </div>
 
-<div onselectstart="return false" class="characters_2 none">
+<!-- <div onselectstart="return false" class="characters_2 none"> -->
 
-<?php foreach($CHARACTERS as $C){ ?>
+<?php// foreach($CHARACTERS as $C){ ?>
 
-    <div class="c">
+    <!-- <div class="c">
         <div class="im"> <img src="<?= LFOLDER_ANIME_CHARACTERS ?? "" ?><?= !empty($C['PHOTO']) ? $C['PHOTO'] : "default.png" ?>" alt=""> </div>
         <div class="n"> <?= !empty($C['SPECIAL']) && $C['SPECIAL'] == 'true' ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16"><path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/></svg>' : "" ?> <span> <?= $C['NAMES'] ?? "Nom" ?> </span> </div>
-    </div>
+    </div> -->
 
-<?php } ?>
+<?php //} ?>
 
-</div>
+<!-- </div> -->
 
 <?php } ?>
 
@@ -139,9 +139,9 @@ $CHARACTERS = $var['PERSO'] ?? null;
 <div onselectstart="return false" class="top-title bottom"> <svg onclick="switchDisplay('.list','.list2');" class="<?= LANG_DIR == 'ltr' ? 'right' :'left'; ?>" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/></svg> <span> <?= LANG['EPISODE_LIST'] ?? "Listes des épisodes" ?> </span>   </div>
 
 
-<?php if(!empty($EPISODE)){ ?>
+<?php if(!empty($EPISODE) && 1==0){ ?>
 
-<div onselectstart="return false" class="list2 ">
+<div onselectstart="return false" class="list2 none">
 
 <?php foreach($EPISODE as $E){ $odate = array_slice( explode('/', $E['PUBLISH_DATE']) ,1); $acdate = array_slice( explode("/", $ROOT->actual_date()) ,1); ?>
 
@@ -156,7 +156,7 @@ $CHARACTERS = $var['PERSO'] ?? null;
 
 <?php } else{ ?>
 
-<div class="empty"> <span> <?= LANG['WAITING_FOR'] ?? "En attente" ?>... </span> </div>
+<!-- <div class="empty"> <span> <?= LANG['WAITING_FOR'] ?? "En attente" ?>... </span> </div> -->
 
 <?php } ?>
 
@@ -164,7 +164,7 @@ $CHARACTERS = $var['PERSO'] ?? null;
 
 <?php if(!empty($EPISODE)){ ?>
 
-    <div onselectstart="return false" class="list none">
+    <div onselectstart="return false" class="list ">
 
     <?php foreach($EPISODE as $E){ ?>
 
@@ -232,43 +232,43 @@ $CHARACTERS = $var['PERSO'] ?? null;
 </div>
 
 <script>
-    var countDis=0;
-    function switchDisplay(l2,l1)
-    {
-        var list2 = document.querySelector(l2);
-        var list1 = document.querySelector(l1);
+    // var countDis=0;
+    // function switchDisplay(l2,l1)
+    // {
+    //     var list2 = document.querySelector(l2);
+    //     var list1 = document.querySelector(l1);
 
-        if(countDis == 0){
-        list2.style.display = "flex";
-        list1.style.display = "none";
-        countDis=1;
-        }else{
-        list2.style.display = "none";
-        list1.style.display = "block";
-        countDis=0;
-        }
-    }
+    //     if(countDis == 0){
+    //     list2.style.display = "flex";
+    //     list1.style.display = "none";
+    //     countDis=1;
+    //     }else{
+    //     list2.style.display = "none";
+    //     list1.style.display = "block";
+    //     countDis=0;
+    //     }
+    // }
 
-    var countDisCharacter=0;
-    function switchDisplayCharacter(l2,l1)
-    {
-        var list2 = document.querySelector(l2);
-        var list1 = document.querySelector(l1);
+    // var countDisCharacter=0;
+    // function switchDisplayCharacter(l2,l1)
+    // {
+    //     var list2 = document.querySelector(l2);
+    //     var list1 = document.querySelector(l1);
 
-        if(countDisCharacter == 0){
-        list2.style.display = "block";
-        list1.style.display = "none";
-        countDisCharacter=1;
-        }else{
-        list2.style.display = "none";
-        list1.style.display = "flex";
-        countDisCharacter=0;
-        }
-    }
+    //     if(countDisCharacter == 0){
+    //     list2.style.display = "block";
+    //     list1.style.display = "none";
+    //     countDisCharacter=1;
+    //     }else{
+    //     list2.style.display = "none";
+    //     list1.style.display = "flex";
+    //     countDisCharacter=0;
+    //     }
+    // }
 
-    var t = document.querySelector('.list');
-    var t2 = document.querySelector('.characters_2');
+    // var t = document.querySelector('.list');
+    // var t2 = document.querySelector('.characters_2');
 
-    t.style.display = 'none';
-    t2.style.display = 'none';
+    // t.style.display = 'none';
+    // t2.style.display = 'none';
 </script>
