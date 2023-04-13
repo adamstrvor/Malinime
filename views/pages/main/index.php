@@ -42,18 +42,26 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
     <div class="infooo"> <?= LANG['WELCOME'] ?? ' Découvrez les meilleurs des séries animés gratuitement en ligne ! ' ?> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-router-fill" viewBox="0 0 16 16"><path d="M5.525 3.025a3.5 3.5 0 0 1 4.95 0 .5.5 0 1 0 .707-.707 4.5 4.5 0 0 0-6.364 0 .5.5 0 0 0 .707.707Z"/><path d="M6.94 4.44a1.5 1.5 0 0 1 2.12 0 .5.5 0 0 0 .708-.708 2.5 2.5 0 0 0-3.536 0 .5.5 0 0 0 .707.707Z"/><path d="M2.974 2.342a.5.5 0 1 0-.948.316L3.806 8H1.5A1.5 1.5 0 0 0 0 9.5v2A1.5 1.5 0 0 0 1.5 13H2a.5.5 0 0 0 .5.5h2A.5.5 0 0 0 5 13h6a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5h.5a1.5 1.5 0 0 0 1.5-1.5v-2A1.5 1.5 0 0 0 14.5 8h-2.306l1.78-5.342a.5.5 0 1 0-.948-.316L11.14 8H4.86L2.974 2.342ZM2.5 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm4.5-.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0Zm2.5.5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Zm1.5-.5a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0Zm2 0a.5.5 0 1 1 1 0 .5.5 0 0 1-1 0Z"/><path d="M8.5 5.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0Z"/></svg> </div>
 
-<?php }else{ ?>
+<?php }else if($request_time <= 8){ ?>
 
-    <!-- <div class="infooo"> </div> -->
+    <div class="infooo"> 
+        <?= LANG[''] ?? "Bientôt de nouveaux épisodes pour cette saison !" ?>
+    </div>
 
 <?php } ?>
+<!-- 
+<div class="new-season">
+    <div class="title"> <?= LANG[''] ?? "Bientôt de nouveaux animes pour cette saison !" ?> </div>
+</div> -->
 
+<?php if($PAGE_INDEX == 1){ ?>
 <form action="" method="get" id="UPDATEANIME" >
 <div class="top-title sp between"> <span> <?= LANG['TRIER'] ?? "TRIER" ?> </span> <div class="option"> <span  onclick=" var trier = document.querySelector('#TRIERANIME'); trier.value = 'all';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['ALL'] ?? "TOUS" ?> </span>  <span  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vf';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VF'] ?? "VF" ?> </span> <span  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vostfr';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VOSTFR'] ?? "VOSTFR" ?> </span>  </div> </div>
 
 <input type="hidden" name="p" value="<?= $PAGE_INDEX ?>" id="PAGE_SELECT">
 <input type="hidden" id="TRIERANIME" name="v" value="all">
 </form>
+<?php } ?>
 
 <?php if($PAGE_INDEX == 1 && 1==0){ ?>
 <div class="branding">
@@ -148,7 +156,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 <?php } ?>
 
 <br>
-
+<!--
 <form action="" method="get" class="page2">
 
 <?php if($PAGE_INDEX -1 > 0 ){ ?> <div class="btn" onclick="changePage(this,<?= $PAGE_INDEX -1 ?>)" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> </div> <?php } ?>
@@ -161,7 +169,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
 </form>
 
-<!--
+-->
 
 <form action="" method="get" class="page">
 
@@ -212,9 +220,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
     <input type="hidden" name="p" value="<?= $PAGE_INDEX ?>" id="PAGE_SELECT">
 </form>
 
-        -->
-
-<!-- <?php if(!empty($ALL)){ ?>
+ <?php if(!empty($ALL)){ ?>
 
 <section class="all">
 
@@ -230,7 +236,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 </div>
 
 </section>
-<?php } ?> -->
+<?php } ?> 
 
 
 
