@@ -44,107 +44,52 @@ class Main extends Controller
         echo file_get_contents("https://t.me/malinime");die();
     }
 
-    //  SRC
-    //---------------------------------
-    function src($params=null)
+    // PUBS
+    //------------------------------------------
+    function pubs($params=null)
     {
-        // $byteArray = file(FOLDER_ANIME_SRC.(!empty($params[0]) && 1==0 ? $params[0] : "default.mp4"));
-        header("content-type: video/mp4");
-        // header("accept-ranges: bytes");
-        header("Location: ".LFOLDER_ANIME_SRC.(!empty($params[0]) ? $params[0] : "default.mp4"));
-        die();
-        ?>
+        $ROOT = new Controller;
+        $MODEL = new _Main;
+        $view = 'main/pubs';
+        $var = array();
+        $var['css_folder'] = 'main/pubs';
 
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Src</title>
-        </head>
-        <body>
+        $_COOKIE[SESSION]['request_pubs'] = ($_COOKIE[SESSION]['request_pubs'] ?? 0) + 1;$this->save();
 
-        <video src="" width="600px" height="300px"></video>
-        
-        <script>
-            var vid = document.querySelector("video");
-            var byteVid = <?= json_encode($byteArray); ?> ;
-            var blob = new Blob(byteVid,{type:"video/mp4"});
-            var url = (URL).createObjectURL(blob);
-            vid.oncanplay = function(){
-                (URL).revokeObjectURL(this.src);
-            };
-            vid.src = url;
-        </script>
+        $var['request_time'] = $_COOKIE[SESSION]['request_pubs'] ?? 1 ;
 
-        </body>
-        </html>
+        $var['title'] = LANG[''] ?? "Espace publicitaire";
 
-        <?php
-    }
+        $var['page'] = "EMBED";
 
-    //  GET VIDEO
-    //---------------------------------
-    function get_video($params=null)
-    {
-        $src = !empty($params[0]) ? $params[0] : "none";
+        if(!empty($_POST)){
+            
+            if(!empty($_POST['BRAND_NAME']) && !empty($_POST['BRAND_SLOGAN'] && !empty($_POST['BRAND_PUB_TIME'])) && !empty($_FILES['BRAND_ICON']) && !empty($_FILES['BRAND_PUB_ICON']) )
+            {
+                $t['BRAND_NAME'] = htmlspecialchars( strip_tags( $_POST['BRAND_NAME'] ?? "" ) );
+                $t['BRAND_SLOGAN'] = htmlspecialchars( strip_tags( $_POST['BRAND_SLOGAN'] ?? "" ) ); 
+                $t['BRAND_PUB_TIME'] = htmlspecialchars( strip_tags( $_POST['BRAND_PUB_TIME'] ?? "" ) );
+                $t['BRAND_SITE'] = htmlspecialchars( strip_tags( $_POST['BRAND_SITE'] ?? "" ) );
+                $t['BRAND_CONTACT'] = htmlspecialchars( strip_tags( $_POST['BRAND_CONTACT'] ?? "" ) );
 
-     ?>
+                if($MODEL->add_pubs($t)){
+                    $_COOKIE[SESSION]['GLOBAL_NOTIF'][] = ['class'=>'good','msg'=> (LANG['THANKS'] ?? "Nous avons bien réçus. Merci pour votre contribution !" ).' !' ];$this->save();
+                    header("Location: ".$_SERVER['HTTP_REFERER'] ?? $this->link('MAIN'));
+                    exit();
+                }
+                else{
+                    $_COOKIE[SESSION]['GLOBAL_NOTIF'][] = ['class'=>'bad','msg'=> (LANG['ERROR_SEND'] ?? "Erreur d'envoie" ).' !' ];$this->save();
+                    header("Location: ".$_SERVER['HTTP_REFERER'] ?? $this->link('MAIN'));
+                }
 
-     <!DOCTYPE html>
-     <html lang="en">
-     <head>
-         <meta charset="UTF-8">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>Get video</title>
-     </head>
-     <body>
+            }
+            else{
+                $_COOKIE[SESSION]['GLOBAL_NOTIF'][] = ['class'=>'bad','msg'=> (LANG[''] ?? "Veuillez remplir les champs réquis !").' !' ];$this->save();
+                header("Location: ".$_SERVER['HTTP_REFERER'] ?? $this->link('MAIN'));
+            }
+        }
 
-     <iframe src="http://localhost/anime/?page=src/186.mp4" width="500px" height="300px" frameborder="0"></iframe>    
-
-         <script>
-
-// window.addEventListener('DOMContentLoaded',function(){
-
-// var iframe = document.querySelector('iframe');
-  
-//   Array.from(iframe.contentWindow.document.getElementsByTagName("img")).forEach(function (e) {
-//         if (!e.src.includes(window.location.host)) {
-//             e.remove();
-//         }
-//     });
-    
-//     Array.from(iframe.contentWindow.document.getElementsByTagName("div")).forEach(function (e) {
-//         var ex = ['ad','ads','pubs','advertising','blocker','site'];
-//         for( i in ex)
-//         {
-//             if ( (e.className).includes(ex[i]) ) {
-//                 e.remove();
-//             }
-//         }
-//     });
-
-//     Array.from(iframe.contentWindow.document.getElementsByTagName("script")).forEach(function (e) {
-//         var ex = ['ad','ads','pubs','advertising','blocker','site'];
-//         for( i in ex)
-//         {
-//             if ( (e.src).includes(ex[i]) ) {
-//                 e.remove();
-//             }
-//         }
-//     });
-
-// }
-
-</script>
-
-     </body>
-     </html>
-
-     <?php
-
+        $this->render($view,$var);
     }
 
     // MAIN
@@ -162,14 +107,14 @@ class Main extends Controller
 
         if( !empty($_REQUEST['v']) && $_REQUEST['v'] == 'vf' )
         {
-            $ANIMES = $MODEL->get_anime(" WHERE VERSIONS = 'VF' ORDER BY LAST_UPDATE DESC");
+            $ANIMES = $MODEL->get_anime(" WHERE VERSIONS = 'VF' ".(!empty($_REQUEST['sp']) && $_REQUEST['sp'] == 'true' ? "&& SPECIAL = 'true'" :  "")." ORDER BY LAST_UPDATE DESC");
         }
         else if( !empty($_REQUEST['v']) && $_REQUEST['v'] == 'vostfr' )
         {
-            $ANIMES = $MODEL->get_anime(" WHERE VERSIONS = 'VOSTFR' ORDER BY LAST_UPDATE DESC");
+            $ANIMES = $MODEL->get_anime(" WHERE VERSIONS = 'VOSTFR' ".(!empty($_REQUEST['sp']) && $_REQUEST['sp'] == 'true' ? "&& SPECIAL = 'true'" :  "")." ORDER BY LAST_UPDATE DESC");
         }
         else
-        $ANIMES = $MODEL->get_anime(" ORDER BY LAST_UPDATE DESC");
+        $ANIMES = $MODEL->get_anime((!empty($_REQUEST['sp']) && $_REQUEST['sp'] == 'true' ? "WHERE SPECIAL = 'true'" :  "")." ORDER BY LAST_UPDATE DESC");
 
         $var['ALL'] = $ANIMES;
         
@@ -191,6 +136,8 @@ class Main extends Controller
         {
             $var['ANIMES'] = array_slice($var['ANIMES'], $var['LIMIT'] * ($var['PAGE_INDEX'] -1 )) ;
         }
+
+        $var['PUBS'] = $MODEL->get_all_pubs();
 
         $var['PUBS_EXT'][] = '<a href="https://www.amazon.fr/Coque-Anime-iPhone-Cartoon-Promax/dp/B09KHGF8CS?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=21QVF0Q1JHK9&keywords=one%2Bpiece%2Bgear%2B4&qid=1670079072&sprefix=one%2Bpiece%2Bgear%2B%2Caps%2C213&sr=8-23&th=1&linkCode=li2&tag=malinime-21&linkId=764a63ad9c2510c9841326477a7422ea&language=fr_FR&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B09KHGF8CS&Format=_SL160_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=malinime-21&language=fr_FR" ></a><img src="https://ir-fr.amazon-adsystem.com/e/ir?t=malinime-21&language=fr_FR&l=li2&o=8&a=B09KHGF8CS" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />';
         $var['PUBS_EXT'][] = '<a href="https://www.amazon.fr/Punch-Saison-2-Coffret-%C3%89dition-Collector/dp/B08CM666XK?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1LQTXXZNVXI88&keywords=one+punch+man&qid=1670078997&sprefix=one+punch+man%2Caps%2C175&sr=8-39&linkCode=li2&tag=malinime-21&linkId=127dc7d7b25c7d47acddf3cee08825bc&language=fr_FR&ref_=as_li_ss_il" target="_blank"><img border="0" src="//ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=B08CM666XK&Format=_SL160_&ID=AsinImage&MarketPlace=FR&ServiceVersion=20070822&WS=1&tag=malinime-21&language=fr_FR" ></a><img src="https://ir-fr.amazon-adsystem.com/e/ir?t=malinime-21&language=fr_FR&l=li2&o=8&a=B08CM666XK" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />';
@@ -235,7 +182,7 @@ class Main extends Controller
 
             $WA = explode(' ',$word);
 
-            foreach($WA as $w)
+            foreach($WA as $w) 
             {
 
                 foreach($ANIMES as $A)
@@ -312,7 +259,7 @@ class Main extends Controller
             if(!empty($var['ANIME']) )
             {
                 $id = $var['ANIME']['ID'];
-                $var['title'] = $var['ANIME']['FULL_NAME'] ;//. ' - '. SITE_NAME;
+                $var['title'] = str_replace("<ap>","'", $var['ANIME']['FULL_NAME']) ;//. ' - '. SITE_NAME;
                 $var['VIDEO'] = $MODEL->get_video(" WHERE ANIME_ID = '$id' ORDER BY EPISODE DESC ");
                 $var['COMMENTS'] = $MODEL->get_comment("WHERE ANIME_ID = '$id' ");
                 $var['description'] = $var['ANIME']['SYNOPSIS_'.LANG_SYSTEM] ?? ( (LANG['LOOK'] ?? "Regarder").' '.$var['title'].' '.(LANG['FOR_FREE'] ?? "gratuitement") ) ;
@@ -389,6 +336,7 @@ class Main extends Controller
             $aid = $var['VIDEO']['ANIME_ID'];
             $anime = $MODEL->get_anime( " WHERE ID = '$aid' " ,true);
             $var['VIDEO']['ANIME_NAME'] = $anime['FULL_NAME'];
+            $var['ANIME'] = $anime;
 
             if($var['VIDEO']['SOURCE_LINK']){
             $size = count( explode('|',$var['VIDEO']['SOURCE_LINK']) ) ;

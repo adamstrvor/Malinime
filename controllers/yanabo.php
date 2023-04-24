@@ -299,7 +299,7 @@ echo substr($content_new,0,abs($end ));
                 $t['FULL_NAME'] = htmlspecialchars( strip_tags( $_POST['FULL_NAME'] ?? "" ) );
                 $t['ORIGINAL_NAME'] = htmlspecialchars( strip_tags( $_POST['ORIGINAL_NAME'] ?? "" ) );
                 $t['ROMANJI'] = htmlspecialchars( strip_tags( $_POST['ROMANJI'] ?? "" ) );
-
+                $t['SPECIAL'] = !empty($_POST['SPECIAL']) ? 'true' : 'false';
                 $t['STUDIO'] = htmlspecialchars( strip_tags( $_POST['STUDIO'] ?? "" ) );
                 $t['TRAILER'] = htmlspecialchars( strip_tags( $_POST['TRAILER'] ?? "" ) );
                 $t['OUT_DATE'] = htmlspecialchars( strip_tags( $_POST['OUT_DATE'] ?? "" ) );

@@ -214,6 +214,8 @@ $lang =
     "UPDATE_AVATAR" => "Modifier votre avatar",
     "FOR_FREE" => "gratuitement avec ",
 
+    "NEW" => "Nouveau",
+
 ];
 
 ?>

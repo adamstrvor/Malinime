@@ -7,6 +7,60 @@
 class _Main extends Model
 {
 
+    // PUBS
+    ////////////////////////////////
+    function pubs($t){
+
+        $root = new Controller;
+        $date = $root->actual_date();
+        $time = $root->actual_datetime();
+
+        try{
+
+            $id = $this->new_id("PUBS","ID",'hjh');
+
+            $brand_name = $t['BRAND_NAME'];
+            $brand_slogan = $t['BRAND_SLOGAN'];
+            $brand_pub_time = $t['BRAND_PUB_TIME'];
+            $brand_site = $t['BRAND_SITE'];
+            $brand_contact = $t['BRAND_CONTACT'];
+
+            $brand_icon = $this->upload_single_file('BRAND_ICON',10000000,'jpg,jpeg,png',FOLDER_ANIME_BRAND,$id);
+            $brand_icon_name = $test['FILENAME'];
+
+            $pub_icon = $this->upload_single_file('BRAND_ICON',10000000,'jpg,jpeg,png',FOLDER_ANIME_PUBS,$id);
+            $pub_icon_name = $test['FILENAME'];
+
+            if( $brand_icon['STATE'] && $pub_icon['STATE'])
+            {
+                this->execute("INSERT INTO PUBS (ID,DATES,DATETIMES,BRAND_NAME,BRAND_SLOGAN,BRAND_PUB_TIME,BRAND_ICON,BRAND_PUB_ICON,BRAND_SITE,BRAND_CONTACT,BRAND_VISIBLE) VALUES('$id','$date','$time','$brand_name','$brand_slogan','$brand_pub_time','$brand_icon_name','$pub_icon_name','$brand_site','$brand_contact','false'); ");
+                return true;
+            }
+            else{
+                if(!empty($brand_icon['ERROR'])) $_COOKIE[SESSION]['GLOBAL_NOTIF'][] = ['class'=>'bad','msg'=> $brand_icon['ERROR'] ];
+                if(!empty($pub_icon['ERROR'])) $_COOKIE[SESSION]['GLOBAL_NOTIF'][] = ['class'=>'bad','msg'=> $pub_icon['ERROR'] ];
+                $root->save();
+            }
+
+
+        }
+        catch(Exception $e)
+        {
+            return false;
+        }
+
+    }
+
+    function get_all_pubs()
+    {
+        try{
+            return $this->select("SELECT * FROM PUBS");
+        }
+        catch(Exception $e){
+            return null;
+        }
+    }
+
     // VIEWS
     ////////////////////////////////
     function add_views($id,$aid)
@@ -455,9 +509,9 @@ class _Main extends Model
             }
 
             $test = $this->upload_single_file('POSTER',10000000,'jpg,jpeg,png',FOLDER_ANIME_POSTER,$id);
-            $image = $test['FILENAME'];
+            // $image = $test['FILENAME'];
 
-            $this->execute("UPDATE ANIMES SET LINK='$link', FULL_NAME='$full_name', ORIGINAL_NAME='$original_name', STUDIO='$studio',TRAILER='$trailer',OUT_DATE='$out_date',GENRE='$genre',VERSIONS='$version',STATUSS='$status', ROMANJI='$romanji' WHERE ID = '$id' OR LINK = '$id' ");
+            $this->execute("UPDATE ANIMES SET LINK='$link', FULL_NAME='$full_name', SPECIAL='$special', ORIGINAL_NAME='$original_name', STUDIO='$studio',TRAILER='$trailer',OUT_DATE='$out_date',GENRE='$genre',VERSIONS='$version',STATUSS='$status', ROMANJI='$romanji' WHERE ID = '$id' OR LINK = '$id' ");
             $this->execute("UPDATE VIDEOS SET ANIME_NAME='$full_name', ANIME_VERSION='$version' WHERE ANIME_ID = '$id' OR LINK = '$id' ");
 
 

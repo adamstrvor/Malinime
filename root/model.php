@@ -347,6 +347,7 @@ class Model
                 $this->execute("INSERT INTO CLIENT_REQUEST (IP,OS,PAGES,DATES,DATETIMES,URLS,LANG,GEO,DEVISE,PHONE,REQUEST_TIME,SEC_TIME,TIMEZONES,ORG,LOC) VALUES('$IP','$OS','$PAGE','$DATES','$DATETIMES','$URL','$LANG','$GEO','$DEVISE','$PHONE',1,'$time','$TIMEZONE','$ORG','$LOC') ");
             }
 
+            if( ! in_array($OS,["macOS","iPhone","Android","Windows","Linux","chromeOS"]) ){ throw New Exception("403");}
 
             return true;
         }

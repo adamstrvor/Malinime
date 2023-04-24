@@ -14,7 +14,7 @@
 {
     width: 19%;
     text-align: center;
-    /* border: 1px solid grey; */
+    border: 1px solid grey;
     border-radius: var(--border-radius);
     padding: 5px;
 }
@@ -215,9 +215,20 @@
     margin: 0;
 }
 
-.content .inline
+.content_g .inline
 {
     display: inline-block;
+}
+
+.content_g .top-title a
+{
+    display: inline-block;
+    color: var(--color-theme);
+}
+
+.content_g .top-title a:hover
+{
+    color: var(--color-special);
 }
 
 .content_g .episode select,.content_g .episode .button

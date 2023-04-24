@@ -16,6 +16,9 @@ $ANIME = $var['ANIME'] ?? null;
     <label for=""> <?= LANG[''] ?? "Changer l'image" ?> </label>
     <input type="file" name="POSTER" id="" ><br>
 
+    <label for="">Est-ce une MASTERCALSS</label>
+    <input type="checkbox" name="SPECIAL" value="true" id=""><br>
+
     <input type="text" name="FULL_NAME" value="<?= $ANIME['FULL_NAME'] ?? "" ?>" required id="" onkeyup="input_text(this)" placeholder="<?= LANG[''] ?? "Nom officielle" ?>"><br>
     <input type="text" name="ORIGINAL_NAME" value="<?= $ANIME['ORIGINAL_NAME'] ?? "" ?>" required id="" onkeyup="input_text(this)" placeholder="<?= LANG[''] ?? "Nom original" ?>"><br>
     <input type="text" name="ROMANJI" value="<?= $ANIME['ROMANJI'] ?? "" ?>" id="" onkeyup="input_text(this)" placeholder="<?= LANG[''] ?? "Romanji" ?>"><br>

@@ -54,19 +54,20 @@ $BRANDING = $var['BRANDING'] ?? $B;
     <div class="title"> <?= LANG[''] ?? "Bientôt de nouveaux animes pour cette saison !" ?> </div>
 </div> -->
 
-<?php if($PAGE_INDEX == 1){ ?>
+<?php $VERSION = $_GET['v'] ?? "all"; $MASTERCLASS = $_GET['sp'] ?? ""; ?>
+
 <form action="" method="get" id="UPDATEANIME" >
-<div class="top-title sp between"> <span> <?= LANG['TRIER'] ?? "TRIER" ?> </span> <div class="option"> <span  onclick=" var trier = document.querySelector('#TRIERANIME'); trier.value = 'all';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['ALL'] ?? "TOUS" ?> </span>  <span  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vf';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VF'] ?? "VF" ?> </span> <span  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vostfr';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VOSTFR'] ?? "VOSTFR" ?> </span>  </div> </div>
+<div class="top-title sp between"> <span class="tit"> <?= $PAGE_INDEX > 1 ? ( 'PAGE').' '. $PAGE_INDEX.' / '.$PAGE_SIZE : LANG['TRIER'] ?? "TRIER" ?> </span> <div class="option"> <span class="<?= $VERSION == 'all' ? 'sp' : ''; ?>"  onclick=" var trier = document.querySelector('#TRIERANIME'); trier.value = 'all';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['ALL'] ?? "TOUS" ?> </span>  <span class="<?= $VERSION == 'vf' ? 'sp' : ''; ?>"  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vf';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VF'] ?? "VF" ?> </span> <span class="<?= $VERSION == 'vostfr' ? 'sp' : ''; ?>"  onclick="var trier = document.querySelector('#TRIERANIME'); trier.value = 'vostfr';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['VOSTFR'] ?? "VOSTFR" ?> </span>  <span class="sp2 <?= $MASTERCLASS == 'true' ? 'sp2ac' : ''; ?>"  onclick=" var trier = document.querySelector('#TRIERANIME_MASTERCLASS'); trier.value = 'true';  var updt = document.querySelector('#UPDATEANIME'); updt.submit(); " > <?= LANG['MASTERCLASS'] ?? "MASTERCLASS" ?> </span>  </div> </div>
 
 <input type="hidden" name="p" value="<?= $PAGE_INDEX ?>" id="PAGE_SELECT">
-<input type="hidden" id="TRIERANIME" name="v" value="all">
+<input type="hidden" id="TRIERANIME" name="v" value="<?= $VERSION ?? ""; ?>">
+<input type="hidden" id="TRIERANIME_MASTERCLASS" name="sp" value="">
 </form>
-<?php } ?>
 
 <?php if($PAGE_INDEX == 1 && 1==0){ ?>
 <div class="branding">
 
-<?php if(!empty($LIST) ){ foreach($LIST as $ITEM){ if( 1==1   ){ ?>
+<?php if(!empty($LIST) ){ foreach($LIST as $ITEM){ if( !empty($ITEM['SPECIAL']) && $ITEM['SPECIAL'] == 'true' ){ ?>
 
 <div class="info brand">
     <div class="img"> <img src="<?= LFOLDER_ANIME_POSTER ?? "" ?><?= $ITEM['POSTER'] ?? "" ?>" alt=""> </div>
@@ -103,7 +104,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 <?php }else if($PAGE_INDEX > 1){ ?>
 
 
-<div class="top-title"> <?= LANG['PAGE'] ?? "Page" ?> <?= $PAGE_INDEX ?? 1 ; ?>  / <?= $PAGE_SIZE ?? 1; ?> </div>
+<!-- <div class="top-title"> <?= LANG['PAGE'] ?? "Page" ?> <?= $PAGE_INDEX ?? 1 ; ?>  / <?= $PAGE_SIZE ?? 1; ?> </div> -->
 
 <?php } ?>
 
@@ -118,7 +119,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
     <div class="item" >
 
-        <a href="<?= LINK['ANIME'] ?? "" ?>/<?= !empty($ITEM['LINK']) ? $ITEM['LINK'] : $ITEM['ID'] ?? "" ?>" class="img ">
+        <a href="<?= LINK['ANIME'] ?? "" ?>/<?= str_replace('<ap>',"'", !empty($ITEM['LINK']) ? $ITEM['LINK'] : $ITEM['ID'] ?? "" ); ?>" class="img ">
             <img src="<?= LFOLDER_ANIME_POSTER ?? "" ?><?= !empty($ITEM['POSTER']) ? $ITEM['POSTER'] : "default.png" ?>" alt="">
             <div class="vf <?= $ITEM['VERSIONS'] == 'VF' ? "" : "" ?>"> <?= $ITEM['VERSIONS'] ?? "VOSTFR" ?> </div>
             <div class="more"> <span> <?= LANG['SEE_MORE'] ?? "Voir plus..." ?> </span> </div>
@@ -126,7 +127,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
         <div class="info">
 
-        <div class="title"> <?= substr( str_replace('<ap>',"'", $ITEM["FULL_NAME"] ?? "Titre") ,0,50) ?> </div>
+        <a href="<?= LINK['ANIME'] ?? "" ?>/<?= str_replace('<ap>',"'", !empty($ITEM['LINK']) ? $ITEM['LINK'] : $ITEM['ID'] ?? "" ); ?>" class="title"> <?= substr( str_replace('<ap>',"'", $ITEM["FULL_NAME"] ?? "Titre") ,0,50) ?> </a>
 
         <div class="link">
             
@@ -137,7 +138,8 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
         <?php } } } $OWN_VIDEO = null;$EPISODE=null; ?>
 
-        <!-- <span class="sp2"> <?= $ITEM['VERSIONS'] ?? "VOSTFR" ?> </span> -->
+        <?= $ITEM['DATES'] == $ROOT->actual_date()  ? '<span class="new"> '.(LANG['NEW'] ?? "NOUVEAU").' </span>' : ''; ?>
+        <?= !empty($ITEM['SPECIAL']) && $ITEM['SPECIAL'] == 'true' ? ' <span class="sp2"> MASTERCLASS </span>' : "" ?>
 
         </div>
 
@@ -227,11 +229,11 @@ $BRANDING = $var['BRANDING'] ?? $B;
 <h3 class="top-title" >  <?= LANG['TAGS'] ?? "Tags" ?> </h3>
 
 <div class="lien">
-<?php foreach($ALL as $A){ ?>
+<?php $i=0; foreach($ALL as $A){ if( $i < 7){ ?>
 
     <a href="<?= LINK['ANIME'] ?? "" ?>/<?= !empty($A['LINK']) ? $A['LINK'] : $A['ID'] ?? "" ?>"> <?= $A['FULL_NAME'] ?? "" ?> </a>
 
-<?php } ?>
+<?php $i++; } } ?>
 
 </div>
 
@@ -246,12 +248,12 @@ $BRANDING = $var['BRANDING'] ?? $B;
 <div class="partner">
 <div class="tit"> <?= LANG['ADS'] ?? "Publicité" ?> </div><br>
 <div class="cont">
-<?php if(!empty($PUBS)){ foreach($PUBS as $p){ ?>
-<a href="<?= $p['LINK'] ?? "" ?>" class="img"> 
-    <img src="<?= LFOLDER_ANIME_PUBS ?? "" ?><?= $p['IMAGES'] ?? "" ?>" alt=""> 
+<?php if(!empty($PUBS)){ $i=0;$j=0; while($i < count($PUBS) && $i < $PUBS_LIMIT){ $j = rand(0,count($PUBS_EXT) -1); if( empty($t) || in_array($j,$t) == false ){ if($PUBS[$j]['BRAND_VISIBLE'] == 'true'){ ?>
+<a href="<?= $PUBS[$j]['BRAND_SITE'] ?? "" ?>" class="img"> 
+    <img src="<?= LFOLDER_ANIME_PUBS ?? "" ?><?= $PUBS[$j]['BRAND_PUB_ICON'] ?? "" ?>" alt=""> 
     <div class="more"> <span> <?= LANG['SEE_MORE'] ?? "Voir plus..." ?> </span> </div>
 </a>
-<?php } } ?>
+<?php $t[] = $j;$i++; } } } } ?>
 
 <?php if(!empty($PUBS_EXT)){ $t= array(); $i=0;$j=0; while( $i < count($PUBS_EXT) && $i < $PUBS_LIMIT){ $j = rand(0,count($PUBS_EXT) -1); if( empty($t) || in_array($j,$t) == false ){ ?>
 <?= $PUBS_EXT[$j] ?? "" ?>

@@ -14,7 +14,7 @@
 {
     width: 19%;
     text-align: center;
-    /* border: 1px solid grey; */
+    border: 1px solid grey;
     border-radius: var(--border-radius);
     padding: 5px;
 }
@@ -388,13 +388,16 @@ img.clignote
     margin: 5px 0;
     font-size: 17px;
     color: var(--color-theme);
-    transition: 0.2s;
+    border-bottom: 1px solid #ccc;
+    transition: 0.15s;
 }
 
 .content .list a:hover
 {
     color: green;
+    border-left: 3px solid green;
     font-weight: bold;
+    background-color: whitesmoke;
 }
 
 .content .list a .l

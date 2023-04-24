@@ -1,0 +1,131 @@
+
+.background
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    overflow: hidden;
+}
+
+.background img
+{
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.content label.inline
+{
+    display: inline-block;
+    /* line-height: 30px; */
+    color: grey;
+    font-size: 17px;
+    font-weight:  normal;
+    margin-left: 2px;
+    cursor: pointer;
+}
+
+.content label.inline a
+{
+    color: var(--color-special);
+    text-decoration: underline;
+}
+
+.content
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.content form
+{
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    max-width: 60%;
+    max-height: 70%;
+    overflow: scroll;
+    /* background-color: whitesmoke; */
+    /* color: white; */
+    box-shadow: 0px 0px 5px var(--color-theme);
+}
+
+.content form .error
+{
+    padding: 5px;
+    border-radius: var(--border-radius);
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content form .img
+{
+    height: auto;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+
+.content form .img img
+{
+    max-width: 200px;
+    background-color: white;
+    border-radius: var(--border-radius);
+}
+
+.content form .info
+{
+    padding: 5px;
+    border-radius: var(--border-radius);
+    color: green;
+    background-color: var(--color-special-bg);
+    border: 1px solid green;
+    margin: 15px 0;
+    font-size: 16px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content form label
+{
+    display: block;
+    padding: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+    color: inherit;
+    /* font-weight: bold; */
+}
+
+.content form input,.content form textarea
+{
+    display: block;
+    width: 60%;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.content form input[type=checkbox]
+{
+    display: inline;
+}

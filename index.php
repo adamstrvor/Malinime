@@ -94,6 +94,7 @@ define('FOLDER_LOGO',ROOT.'publics/res/logo/v1/');
 define('LFOLDER_LOGO',LROOT.'publics/res/logo/v1/');
 define('FOLDER_ICON',ROOT.'publics/res/icon/v1/');
 define('LFOLDER_ICON',LROOT.'publics/res/icon/v1/');
+
 // CUTOMER
 define('FOLDER_CUSTOMER_IMAGE',ROOT.'publics/res/images/customers/');
 define('LFOLDER_CUSTOMER_IMAGE',LROOT.'publics/res/images/customers/');
@@ -112,6 +113,9 @@ define('LFOLDER_ANIME_VIDEO',LROOT.'publics/res/images/anime/video/');
 
 define('FOLDER_ANIME_SRC',ROOT.'publics/res/src/');
 define('LFOLDER_ANIME_SRC',LROOT.'publics/res/src/');
+
+define('FOLDER_ANIME_BRAND',ROOT.'publics/res/images/anime/brand/');
+define('LFOLDER_ANIME_BRAND',LROOT.'publics/res/images/anime/brand/');
 
 define('FOLDER_ANIME_PUBS',ROOT.'publics/res/images/anime/pubs/');
 define('LFOLDER_ANIME_PUBS',LROOT.'publics/res/images/anime/pubs/');

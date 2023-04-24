@@ -30,7 +30,7 @@ ob_start();
 $subtitle[] =['time'=>'10','duration'=>"7",'status'=>'none','text'=> ( LANG['PUT_FULL_SCREEN'] ?? "appuyer la touche ' f ' pour le plein écran " )." !"];
 $subtitle[] =['time'=>'20','duration'=>"10",'status'=>'none','text'=> ( LANG['PUT_SETTING'] ?? "appuyer la touche ' s ' pour les paramètres " )." !"];
 if(empty($VIDEO_INFO['SUBTITLE']))
-$VIDEO_SUBTITLE = $subtitle;
+$VIDEO_SUBTITLE = null;
 else
 $VIDEO_SUBTITLE = json_decode( $VIDEO_INFO['SUBTITLE'] ?? "");
 ob_get_clean();

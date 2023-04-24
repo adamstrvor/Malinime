@@ -1,0 +1,11 @@
+.background img
+{
+    height: 100%;
+    width: auto;
+}
+
+.content form
+{
+    max-width: 90%;
+    max-height: 90%;
+}

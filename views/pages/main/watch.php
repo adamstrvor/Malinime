@@ -9,6 +9,7 @@ $VIDEO_INFO = $var['VIDEO'] ?? null;
 if(!empty($VIDEO_INFO)){
 $ALL_VIDEO = $var['ALL_VIDEO'] ?? null;
 $COMMENTS = $var['COMMENTS'] ?? null;
+$ANIME = $var['ANIME'] ?? null;
 
 $i=0;
 foreach($ALL_VIDEO as $V){ if($V['EPISODE'] == ($VIDEO_INFO['EPISODE'] - 1) ){ $PREC = !empty($V['LINK']) ? $V['LINK'] : $V['ID']; break; } }
@@ -74,7 +75,7 @@ $PUBS_LIMIT = $var['PUBS_LIMIT'] ?? 8;
 
 <?php } ?>
 
-    <h1 class="top-title nounder "> <span> <?= str_replace('<ap>',"'", $VIDEO_TITLE ?? "" )  ?> </span> <span class="vf"> <?= $VIDEO_INFO['ANIME_VERSION'] ?? "Version" ?> </span> <span class="view"> <?= $ROOT->datetime_compare($VIDEO_INFO['PUBLISH_DATETIME']); ?> </span>  </h1>
+    <h1 class="top-title nounder "> <a href="<?= LINK['ANIME'] ?? "" ?>/<?= !empty($ANIME['LINK']) ? $ANIME['LINK'] ?? "" :$ANIME['ID'] ?? "" ?>"> <?= str_replace('<ap>',"'", $VIDEO_TITLE ?? "" )  ?> </a> <span class="vf"> <?= $VIDEO_INFO['ANIME_VERSION'] ?? "Version" ?> </span> <span class="view"> <?= $ROOT->datetime_compare($VIDEO_INFO['PUBLISH_DATETIME']); ?> </span>  </h1>
 
     <iframe id="IFRAME" src="<?= !empty($SRC) ? $SRC : (LINK['EMBED'] ?? "").'/'.( !empty($VIDEO_INFO['LINK']) ? $VIDEO_INFO['LINK'] ?? "" :$VIDEO_INFO['ID'] ?? "").'/'.(($SELECTED_SOURCE ?? 0) + 1) ; ?>" width="100%" height="500px" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
     
