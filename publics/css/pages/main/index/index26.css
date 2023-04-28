@@ -632,6 +632,7 @@ img.clignote
     display: inline-block;
     font-size: 17px;
     /* border: 2px solid grey; */
+    box-shadow: 0px 0px 3px var(--color-theme);
 }
 
 .content .page2 .btn svg
@@ -646,14 +647,18 @@ img.clignote
     background-color: var(--color-special-bg);
     color: var(--color-special);
     border-color: var(--color-special);
-    box-shadow: 0px 0px 4px var(--color-theme);
+    box-shadow: 0px 0px 5px var(--color-theme);
 }
 
 .content .page2 .txt
 {
     font-size: 18px;
     color: grey;
-    /* font-weight: bold; */
+    background-color: whitesmoke;
+    font-weight: bold;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    box-shadow: 0px 0px 2px var(--color-theme);
 }
 
 .content .page2 .txt .sp

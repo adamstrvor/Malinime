@@ -138,7 +138,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
         <?php } } } $OWN_VIDEO = null;$EPISODE=null; ?>
 
-        <?= $ITEM['DATES'] == $ROOT->actual_date()  ? '<span class="new"> '.(LANG['NEW'] ?? "NOUVEAU").' </span>' : ''; ?>
+        <?php $odate = array_slice( explode('/', $ITEM['DATES']) ,1) ; $acdate = array_slice( explode("/", $ROOT->actual_date()) ,1); if( $ITEM['DATES'] == $ROOT->actual_date() || ( $odate[2] == $acdate[2] && $odate[1] == $acdate[1] && abs($odate[0] - $acdate[0]) <=1 )  ){ echo '<span class="new"> '.(LANG['NEW'] ?? "NOUVEAU").' </span>' ;} ?>
         <?= !empty($ITEM['SPECIAL']) && $ITEM['SPECIAL'] == 'true' ? ' <span class="sp2"> MASTERCLASS </span>' : "" ?>
 
         </div>
@@ -158,7 +158,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 <?php } ?>
 
 <br>
-<!--
+
 <form action="" method="get" class="page2">
 
 <?php if($PAGE_INDEX -1 > 0 ){ ?> <div class="btn" onclick="changePage(this,<?= $PAGE_INDEX -1 ?>)" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/><path fill-rule="evenodd" d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/></svg> </div> <?php } ?>
@@ -171,7 +171,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
 
 </form>
 
--->
+<!--
 
 <form action="" method="get" class="page">
 
@@ -222,7 +222,18 @@ $BRANDING = $var['BRANDING'] ?? $B;
     <input type="hidden" name="p" value="<?= $PAGE_INDEX ?>" id="PAGE_SELECT">
 </form>
 
- <?php if(!empty($ALL)){ ?>
+        -->
+
+
+<section class="all">
+    <h3 class="top-title" > <?= LANG[''] ?? "Contribution" ?> </h3>
+    <div class="lien">
+        <a href="https://fr.tipeee.com/malinime-streaming" target="_blank"> <?= LANG[''] ?? "Soutenir la plateforme de streaming"  ?> </a>
+    </div>
+</section>
+
+
+ <?php if(!empty($ALL) && 1==0){ ?>
 
 <section class="all">
 
