@@ -20,7 +20,7 @@ foreach($ALL_VIDEO as $V){ if($V['EPISODE'] == ($VIDEO_INFO['EPISODE'] + 1) ){ $
 $VIDEO_TITLE = ($VIDEO_INFO['ANIME_NAME'] ?? "Titre").' - '.($VIDEO_INFO['EPISODE'] < 10 ? '0'.$VIDEO_INFO['EPISODE'] : $VIDEO_INFO['EPISODE']);//.' - '.( strtoupper( $VIDEO_INFO['ANIME_VERSION'] ?? "Version") );
 $VIDEO_TYPE = $VIDEO_INFO['TYPE'] ?? "video/mp4";
 $VIDEO_DESC = ($VIDEO_INFO['DESCRIP'] ?? "Description");
-$VIDEO_LOCATION = LFOLDER_ANIME_VIDEO.($VIDEO_INFO['LOCATION'] ?? "kulosa.mp4");
+$VIDEO_LOCATION = LFOLDER_ANIME_VIDEO.($VIDEO_INFO['LOCATION'] ?? "default.mp4");
 
 if(!empty($VIDEO_INFO['IFRAME_LINK']) && $VIDEO_INFO['IFRAME_LINK'] != ""  )
 {
@@ -77,7 +77,7 @@ $PUBS_LIMIT = $var['PUBS_LIMIT'] ?? 8;
 
     <h1 class="top-title nounder "> <a href="<?= LINK['ANIME'] ?? "" ?>/<?= !empty($ANIME['LINK']) ? $ANIME['LINK'] ?? "" :$ANIME['ID'] ?? "" ?>"> <?= str_replace('<ap>',"'", $VIDEO_TITLE ?? "" )  ?> </a> <span class="vf"> <?= $VIDEO_INFO['ANIME_VERSION'] ?? "Version" ?> </span> <span class="view"> <?= $ROOT->datetime_compare($VIDEO_INFO['PUBLISH_DATETIME']); ?> </span>  </h1>
 
-    <iframe id="IFRAME" src="<?= !empty($SRC) ? $SRC : (LINK['EMBED'] ?? "").'/'.( !empty($VIDEO_INFO['LINK']) ? $VIDEO_INFO['LINK'] ?? "" :$VIDEO_INFO['ID'] ?? "").'/'.(($SELECTED_SOURCE ?? 0) + 1) ; ?>" width="100%" height="500px" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
+    <iframe id="IFRAME" src="<?= !empty($SRC) ? $SRC : (LINK['EMBED'] ?? "").'/'.( str_replace('<ap>',"'", !empty($VIDEO_INFO['LINK']) ? $VIDEO_INFO['LINK'] ?? "" :$VIDEO_INFO['ID'] ?? "") ).'/'.(($SELECTED_SOURCE ?? 0) + 1) ; ?>" width="100%" height="500px" scrolling="no" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" frameborder="0"></iframe>
     
     <form action="" method="post" class="episode">
 

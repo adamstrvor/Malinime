@@ -426,6 +426,15 @@
     /* border-radius: var(--border-radius); */
 }
 
+@media screen and (min-height:1200px) {
+
+    .content_g iframe
+    {
+        height: 700px;
+    }
+    
+}
+
 /* .......................................  */
 
 .empty

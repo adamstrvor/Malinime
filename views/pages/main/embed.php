@@ -64,14 +64,14 @@ $TRY = $var['try'] ?? null;
     <!-- <div class="video"> -->
         <video width="auto" height="auto" id="VIDEO" poster="<?= LFOLDER_ANIME_POSTER ?? "" ?><?= $VIDEO_INFO['ANIME_POSTER'] ?? "" ?>" >
 
-            <source src="<?= !empty($VIDEO_INFO['WARNING']) && $VIDEO_INFO['WARNING'] == 'true' && empty($PASSWORD_STATE) ? $VIDEO_LOCATION ?? "" : $VIDEO_LOCATION ?? "" ?>" type="<?= $VIDEO_TYPE ?? "" ?>" >
+            <source src="<?= !empty($VIDEO_INFO['WARNING']) && $VIDEO_INFO['WARNING'] == 'true' && empty($PASSWORD_STATE) ? LFOLDER_ANIME_VIDEO."default.mp4" : $VIDEO_LOCATION ?? "" ?>" type="<?= $VIDEO_TYPE ?? "" ?>" >
             
             <?= $LANG['YOUR_NAV_DONT_SUPPORT'] ?? "Votre navigateur ne supporte pas ce type de video" ?>.
 
         </video>
     <!-- </div> -->
 
-<!-- ACIONS CONTAINER -->
+<!-- ACIONS CONTAINER --> 
 
     <div class="actions hide-show" id="ACTIONS">
 
@@ -141,11 +141,11 @@ $TRY = $var['try'] ?? null;
 
     <div onclick="playPause();" class="box" id="START_BOX"> <?php if(!empty($VIDEO_TITLE) && !empty($VIDEO_DESC)){ ?>  <div class="info"> <div class="title_"> <?= $VIDEO_TITLE ?? "En pause" ?> </div> <div class="desc"> <?= $VIDEO_DESC ?? "" ?> </div> </div> <?php }else{ ?> <div class="loading"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/></svg> </div> <?php } ?> </div>  <!--   <div class="loading"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/></svg> </div>  -->
 
-    <div onclick="playPause();" class="box trans" id="LOADING_BOX"> <div class="loading bounce"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi-2" viewBox="0 0 16 16"><path d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z"/></svg> </div> </div>
+    <div onclick="playPause();" class="box trans" id="LOADING_BOX"> <img src="<?= LFOLDER_IMAGES_ITEMS.'loading.gif' ?>" width="50px" height="50px" >  <!-- <div class="loading bounce"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi-2" viewBox="0 0 16 16"><path d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z"/></svg> </div> --></div>
 
     <div onclick="playPause();" class="box" id="IDLE_BOX">  <canvas id="canvas" width="640" height="480" class="none"></canvas> <div class="loading"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wifi-off" viewBox="0 0 16 16"><path d="M10.706 3.294A12.545 12.545 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c.63 0 1.249.05 1.852.148l.854-.854zM8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065 8.448 8.448 0 0 1 3.51-1.27L8 6zm2.596 1.404.785-.785c.63.24 1.227.545 1.785.907a.482.482 0 0 1 .063.745.525.525 0 0 1-.652.065 8.462 8.462 0 0 0-1.98-.932zM8 10l.933-.933a6.455 6.455 0 0 1 2.013.637c.285.145.326.524.1.75l-.015.015a.532.532 0 0 1-.611.09A5.478 5.478 0 0 0 8 10zm4.905-4.905.747-.747c.59.3 1.153.645 1.685 1.03a.485.485 0 0 1 .047.737.518.518 0 0 1-.668.05 11.493 11.493 0 0 0-1.811-1.07zM9.02 11.78c.238.14.236.464.04.66l-.707.706a.5.5 0 0 1-.707 0l-.707-.707c-.195-.195-.197-.518.04-.66A1.99 1.99 0 0 1 8 11.5c.374 0 .723.102 1.021.28zm4.355-9.905a.53.53 0 0 1 .75.75l-10.75 10.75a.53.53 0 0 1-.75-.75l10.75-10.75z"/></svg> </div> </div>  <!--  <div class="title"> <?= $LANG['CONNEXT_ERROR'] ?? "Connexion interompu" ?> ! </div>    -->
 
-    <div onclick="" class="box notrans" id="INIT_BOX"> <div class="loading bounce"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-download-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0zm-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/></svg> </div> </div>  <!--  <div class="title"> <?= $LANG['WAITING'] ?? "Veuillez patientez" ?>... </div>  -->
+    <div onclick="" class="box notrans" id="INIT_BOX"> <img src="<?= LFOLDER_IMAGES_ITEMS.'loading.gif' ?>" width="50px" height="50px" > <!-- <div class="loading bounce"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-download-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 4.095 0 5.555 0 7.318 0 9.366 1.708 11 3.781 11H7.5V5.5a.5.5 0 0 1 1 0V11h4.188C14.502 11 16 9.57 16 7.773c0-1.636-1.242-2.969-2.834-3.194C12.923 1.999 10.69 0 8 0zm-.354 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V11h-1v3.293l-2.146-2.147a.5.5 0 0 0-.708.708l3 3z"/></svg> </div> --> </div>  <!--  <div class="title"> <?= $LANG['WAITING'] ?? "Veuillez patientez" ?>... </div>  -->
 
 
     <div class="box" id="PARAMS"> 
@@ -207,15 +207,17 @@ $TRY = $var['try'] ?? null;
     <div class="desc"> <?= LANG['DISCLAMER'] ?? "Cette vidéo est fortement déconseillé aux (- 18 ans) " ?> </div>
     <br>
     <?php if(!empty($TRY)) { ?>
-            <div class="bad" id="BAD"> <?= LANG['WRONG_PASS'] ?? "Mot de passe incorrect !" ?> </div><br>
+            <!-- <div class="bad" id="BAD"> <?= LANG['WRONG_PASS'] ?? "Mot de passe incorrect !" ?> </div><br> -->
         <?php } ?>
-    <form action="" method="post" class="none" id="WARNING">
+    <form action="" method="post" class="" onsubmit="this.style.display='none';document.querySelector('#LOAD_PASS').style.display='block';" id="WARNING">
         <input type="password" class="<?= !empty($TRY) ? "bad" : "" ?>" name="PASSWORD" id="" onkeyup="input_text(this)" placeholder="<?= LANG['PASSWORD'] ?? "Password" ?>" >
-        <button type="submit" class="button" onclick=""> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg> <span> <?= LANG['LOOK'] ?? "Regarder" ?> </span> </button>
+        <button type="submit" class="button" onclick=""> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg> <span> <?= LANG['LOOK'] ?? "Regarder" ?> </span> </button>
         <!-- this.parentNode.style.display = 'none'; -->
     </form>
 
-    <button type="submit" class="button" onclick="this.parentNode.style.display = 'none'; var item = document.querySelector('#WARNING'); item.style.display = 'block'; var bad = document.querySelector('#BAD'); bad.style.display = 'none'; "> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-lock-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"/></svg> <span> <?= LANG['LOOK_MEME'] ?? "Regarder" ?> </span> </button>
+    <img src="<?= LFOLDER_IMAGES_ITEMS.'loading.gif' ?>" width="50px" height="50px" class="none" id="LOAD_PASS" > 
+
+    <!-- <button type="submit" class="button" onclick="this.parentNode.style.display = 'none'; var item = document.querySelector('#WARNING'); item.style.display = 'block'; var bad = document.querySelector('#BAD'); bad.style.display = 'none'; "> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg> <span> <?= LANG['LOOK_MEME'] ?? "Regarder" ?> </span> </button> -->
     <br><br>
 
     </div>

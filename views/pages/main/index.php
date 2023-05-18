@@ -133,7 +133,7 @@ $BRANDING = $var['BRANDING'] ?? $B;
             
         <?php if(!empty($OWN_VIDEO) && !empty($EPISODE)){ foreach($OWN_VIDEO as $OWN){ if($OWN['EPISODE'] == max($EPISODE) -1 || $OWN['EPISODE'] == max($EPISODE) ){ $odate = array_slice( explode('/', $OWN['PUBLISH_DATE']) ,1); $acdate = array_slice( explode("/", $ROOT->actual_date()) ,1); ?>
 
-        <a href="<?= LINK['WATCH'] ?? "" ?>/<?= !empty($OWN['LINK']) ? $OWN['LINK'] : $OWN['ID'] ?>" class="sp <?= $OWN['PUBLISH_DATE'] == $ROOT->actual_date() || ( $odate[2] == $acdate[2] && $odate[1] == $acdate[1] && abs($odate[0] - $acdate[0]) <=1 ) ? 'red' : ''; ?>" > <?= $OWN['EPISODE'] < 10 ? '0'.$OWN['EPISODE'] : $OWN['EPISODE'] ?> </a>
+        <a href="<?= LINK['WATCH'] ?? "" ?>/<?= str_replace('<ap>',"'", !empty($OWN['LINK']) ? $OWN['LINK'] : $OWN['ID'] ) ?>" class="sp <?= $OWN['PUBLISH_DATE'] == $ROOT->actual_date() || ( $odate[2] == $acdate[2] && $odate[1] == $acdate[1] && abs($odate[0] - $acdate[0]) <=1 ) ? 'red' : ''; ?>" > <?= $OWN['EPISODE'] < 10 ? '0'.$OWN['EPISODE'] : $OWN['EPISODE'] ?> </a>
         <span class="time"> <?= $ROOT->datetime_compare($OWN['PUBLISH_DATETIME'] ?? "") ?? "" ?> </span><br>
 
         <?php } } } $OWN_VIDEO = null;$EPISODE=null; ?>

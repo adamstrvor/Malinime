@@ -252,7 +252,7 @@ class Main extends Controller
 
         if(!empty($params[0]))
         {
-            $id = htmlspecialchars( strip_tags( $params[0] ) );
+            $id = str_replace("%27","<ap>", htmlspecialchars( strip_tags( $params[0] ) ));
             $var['ANIME'] = $MODEL->get_anime(" WHERE ID = '$id' OR LINK = '$id' ",true) ;
             // $var['ANIME'] = ['POSTER'=>"one.jpg",'SYNOPSIS'=>'ddasd asdsa dasd sadas dadads ','ORIGINAL_NAME'=>'Shiejs jsieea','STATUS'=>'0','STUDIO'=>'MAPPA','TRAILER'=>'https://youtube.com','OUT_DATE'=>'12/12/2022','GENRE'=>'Slice of life',"FULL_NAME"=>"One piece ",'ID'=>'1','LAST_UPDATE'=>$ROOT->actual_datetime(),'SPECIAL'=>true,'VERSIONS'=>"VF"];
 
@@ -324,7 +324,7 @@ class Main extends Controller
         if(!empty($params[0]))
         {
 
-            $id = htmlspecialchars( strip_tags( $params[0] ) );
+            $id = str_replace("'","<ap>", str_replace("%27","<ap>", htmlspecialchars( strip_tags( $params[0] ) )) );
             $var['VIDEO'] = $MODEL->get_video( " WHERE ID = '$id' OR LINK = '$id' ");
 
             // $var['VIDEO'] = ['ID'=>'1222','EPISODE'=>'02','ANIME_NAME'=>"One piece",'ANIME_ID'=>'5','DESCRIP'=>'asdsa asd','TYPES'=>'video/mp4','LOCATIONS'=>'kulosa.mp4','ANIME_VERSION'=>'VOSTFR','PUBLISH_DATETIME'=>$ROOT->actual_datetime()];
@@ -343,7 +343,7 @@ class Main extends Controller
             $var['SELECTED_SOURCE'] = !empty($params[1]) && is_numeric($params[1]) && $params[1] <= $size ? abs($params[1] -1) : $_REQUEST['s'] ??  0;
             }
 
-            $var['title'] = ($var['VIDEO']['ANIME_NAME'] ?? "").' - '.($var['VIDEO']['EPISODE'] < 10 ? '0'.$var['VIDEO']['EPISODE'] : $var['VIDEO']['EPISODE']).' - '.($var['VIDEO']['ANIME_VERSION']) ;//. ' - '. SITE_NAME;
+            $var['title'] = str_replace("<ap>","'", ($var['VIDEO']['ANIME_NAME'] ?? "").' - '.($var['VIDEO']['EPISODE'] < 10 ? '0'.$var['VIDEO']['EPISODE'] : $var['VIDEO']['EPISODE']).' - '.($var['VIDEO']['ANIME_VERSION']) );//. ' - '. SITE_NAME;
             $var['description'] = (LANG['LOOK'] ?? "Regarder").' '.$var['title'].' '.(LANG['FOR_FREE'] ?? "gratuitement");
 
             $anime_id = $var['VIDEO']['ANIME_ID'];
@@ -412,6 +412,26 @@ class Main extends Controller
         $var = array();
         $var['robots'] = 'noindex,nofollow';
 
+        $pos = strpos( $_SERVER['HTTP_USER_AGENT'],'(');
+        $AGENT = explode(' ', strtoupper( substr($_SERVER['HTTP_USER_AGENT'],$pos) ) ) [0];
+
+        if( str_contains( $AGENT,"MACINTOSH")  )
+        $OS = "macOS";
+        else if( str_contains( $AGENT,"IPHONE")  )
+        $OS = "iPhone";
+        else if( str_contains( $AGENT,"ANDROID")  )
+        $OS = "Android";
+        else if( str_contains( $AGENT,"WINDOWS")  )
+        $OS = "Windows";
+        else if( str_contains( $AGENT,"LINUX")  )
+        $OS = "Linux";
+        else if( str_contains( $AGENT,"CHROME")  )
+        $OS = "chromeOS";
+        else
+        $OS = $AGENT;
+
+        // if( ! in_array($OS,["macOS","iPhone","Android","Windows","Linux","chromeOS"]) ){ throw New Exception("403");}
+
         $_COOKIE[SESSION]['request_embed'] = ($_COOKIE[SESSION]['request_embed'] ?? 0) + 1;$this->save();
 
         $var['request_time'] = $_COOKIE[SESSION]['request_embed'] ?? 1 ;
@@ -426,10 +446,10 @@ class Main extends Controller
         // $subtitle = array();
         $subtitle[] =['time'=>'2','text'=> ( LANG['PUT_FULL_SCREEN'] ?? "appuyer la touche ' f ' pour le plein écran " )." !"];
         $subtitle[] =['time'=>'7','text'=> ( LANG['PUT_SETTING'] ?? "appuyer la touche ' s ' pour les paramètres " )." !"];
-        $id = htmlspecialchars( strip_tags( $params[0] ) );
 
         if(!empty($params[0]))
         {
+            $id = str_replace("'","<ap>", str_replace("%27","<ap>", htmlspecialchars( strip_tags( $params[0] ) )));
 
             $var['VIDEO'] = $MODEL->get_video( " WHERE ID = '$id' OR LINK = '$id' ");
             if(!empty($var['VIDEO'])){
@@ -439,7 +459,7 @@ class Main extends Controller
             $anime = $MODEL->get_anime( " WHERE ID = '$aid' " ,true);
             $var['VIDEO']['ANIME_NAME'] = $anime['FULL_NAME'];
             $var['VIDEO']['ANIME_POSTER'] = $anime['POSTER'] ?? "";
-            $var['title'] = ($var['VIDEO']['ANIME_NAME'] ?? "").' - '.($var['VIDEO']['EPISODE'] < 10 ? '0'.$var['VIDEO']['EPISODE'] : $var['VIDEO']['EPISODE']).' - '.($var['VIDEO']['ANIME_VERSION']) ;//. ' - '. SITE_NAME;
+            $var['title'] = str_replace("<ap>","'", ($var['VIDEO']['ANIME_NAME'] ?? "").' - '.($var['VIDEO']['EPISODE'] < 10 ? '0'.$var['VIDEO']['EPISODE'] : $var['VIDEO']['EPISODE']).' - '.($var['VIDEO']['ANIME_VERSION']) );//. ' - '. SITE_NAME;
             $var['description'] = (LANG['LOOK'] ?? "Regarder").' '.$var['title'].' '.(LANG['FOR_FREE'] ?? "gratuitement");
 
             if($var['VIDEO']['SOURCE_LINK']){
