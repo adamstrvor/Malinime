@@ -6,6 +6,7 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [redirect=301,L]
 
 #RewriteEngine On
 #RewriteRule ^([a-zA-Z0-9\-\_\/]+)$ index.php?page=$1
+
 ErrorDocument 401 https://malinime.com
 ErrorDocument 402 https://malinime.com
 ErrorDocument 403 https://malinime.com

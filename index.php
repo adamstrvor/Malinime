@@ -281,8 +281,6 @@ try
 
     $model->add_request($request);
 
-    // print_r($request_body);
-
     // ROUTING
     //------------------------------------------
 
