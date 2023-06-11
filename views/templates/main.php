@@ -29,7 +29,6 @@
 
     $CURRENT_TIME = $var['currentTime'] ?? null;
 
-    $CONNECTED = $var['connected'] ?? false;
     $USER = $var['user'] ?? null;
 
     $ROOT = new Controller;
